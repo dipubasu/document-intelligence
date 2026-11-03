@@ -2,14 +2,26 @@ const app = require('./app');
 const config = require('./config');
 const logger = require('./utils/logger');
 const db = require('./db/connection');
+const worker = require('./workers/jobWorker');
 
 const server = app.listen(config.port, () => {
   logger.info(`server listening on http://localhost:${config.port}`);
+  worker.start();
 });
 
-// Ctrl+C বা বন্ধ করার সময়: নতুন request নেওয়া বন্ধ, database ঠিকমতো বন্ধ
-function shutdown(signal) {
+let shuttingDown = false;
+
+// Ctrl+C বা বন্ধ করার সময়: নতুন job নেওয়া বন্ধ, চলমান job শেষ হওয়া পর্যন্ত অপেক্ষা,
+// তারপর server ও database বন্ধ
+async function shutdown(signal) {
+  if (shuttingDown) return;
+  shuttingDown = true;
   logger.info(`${signal} received, shutting down`);
+
+  // কোনো কিছু আটকে গেলে ১৫ সেকেন্ড পর জোর করে বন্ধ
+  setTimeout(() => process.exit(1), 15000).unref();
+
+  await worker.stop();
   server.close(() => {
     db.close();
     process.exit(0);
