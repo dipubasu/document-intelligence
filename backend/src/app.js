@@ -5,6 +5,7 @@ const rateLimit = require('express-rate-limit');
 const config = require('./config');
 const logger = require('./utils/logger');
 const db = require('./db/connection');
+const documentRoutes = require('./routes/documents');
 
 const app = express();
 
@@ -38,12 +39,15 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// document-এর সব route এখানে জোড়া হলো
+app.use('/api/documents', documentRoutes);
+
 // কোনো route না মিললে
 app.use((req, res) => {
   res.status(404).json({ error: 'Not found' });
 });
 
-// যেকোনো error এখানে এসে পড়ে। ভেতরের বিস্তারিত client কে দেখানো হয় না
+// যেকোনো error এখানে এসে পড়ে। ভেতরের বিস্তারিত client-কে দেখানো হয় না
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   const status = err.status || 500;
