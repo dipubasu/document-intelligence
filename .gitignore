@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+
+# secrets, কখনো GitHub এ যাবে না
+.env
+.env.*
+!.env.example
+
+# runtime data
+backend/data/
+backend/uploads/
+backend/logs/
+*.sqlite
+*.sqlite-journal
+*.db
+
+# build output
+frontend/dist/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# বড় generated dataset (script দিয়ে আবার বানানো যায়)
+evaluation/dataset/large/
