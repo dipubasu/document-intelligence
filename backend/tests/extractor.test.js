@@ -147,3 +147,17 @@ test('extractor: very long text is cut and reported as truncated', async () => {
   assert.strictEqual(truncated, true);
   assert.ok(spy.messages[1].content.length < MAX_TEXT_CHARS + 100);
 });
+test('extractor: a currency that is not written in the text is marked uncertain', async () => {
+  const text = 'Invoice INV-5 Total: $10.00';
+  const llm = mockLlm({ invoice_number: 'INV-5', total: 10, currency: 'USD' });
+  const { invoice } = await extractInvoice(text, { llm });
+  assert.ok(invoice.uncertain_fields.includes('currency'));
+  assert.strictEqual(invoice.currency, 'USD');
+});
+
+test('extractor: a currency code written in the text is not marked uncertain', async () => {
+  const text = 'Invoice INV-5 Total: 10.00 usd';
+  const llm = mockLlm({ invoice_number: 'INV-5', total: 10, currency: 'USD' });
+  const { invoice } = await extractInvoice(text, { llm });
+  assert.ok(!invoice.uncertain_fields.includes('currency'));
+});

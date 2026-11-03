@@ -8,12 +8,40 @@ const path = require('path');
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'pd-worker-'));
 process.env.DB_PATH = path.join(tmpDir, 'test.sqlite');
 process.env.UPLOAD_DIR = path.join(tmpDir, 'uploads');
+// a fake key, so a real key from .env can never be used by these tests
+process.env.GROQ_API_KEY = 'test-key';
+process.env.GROQ_MODEL = 'test-model';
 fs.mkdirSync(process.env.UPLOAD_DIR);
 
 const db = require('../src/db/connection');
 const documentModel = require('../src/models/documentModel');
 const jobModel = require('../src/models/jobModel');
+const llm = require('../src/services/llm');
 const worker = require('../src/workers/jobWorker');
+
+// The LLM is replaced by a mock: no network. Each call returns a different invoice number.
+let llmCounter = 0;
+llm.chatJson = async () => {
+  llmCounter += 1;
+  return {
+    content: JSON.stringify({
+      invoice_number: `W-${llmCounter}`,
+      invoice_date: '2026-01-15',
+      supplier_name: 'Acme Widget',
+      customer_name: null,
+      subtotal: null,
+      tax: null,
+      total: null,
+      currency: null,
+      line_items: [],
+      confidence: {},
+      uncertain_fields: [],
+    }),
+    model: 'mock-model',
+    usage: null,
+    durationMs: 1,
+  };
+};
 
 test.after(() => {
   db.close();
@@ -43,6 +71,8 @@ const getDoc = (id) => db.prepare('SELECT * FROM documents WHERE id = ?').get(id
 const getJob = (id) => db.prepare('SELECT * FROM jobs WHERE id = ?').get(id);
 const countPages = (id) =>
   db.prepare('SELECT COUNT(*) AS c FROM document_pages WHERE document_id = ?').get(id).c;
+const countInvoices = (id) =>
+  db.prepare('SELECT COUNT(*) AS c FROM invoices WHERE document_id = ?').get(id).c;
 
 const CSV = 'item,qty\nAcme Widget,2\n';
 
@@ -58,8 +88,9 @@ test('worker: a good csv job completes and its page is saved', async () => {
   assert.equal(getDoc(documentId).page_count, 1);
   assert.equal(getJob(jobId).status, 'done');
   assert.equal(countPages(documentId), 1);
+  assert.equal(countInvoices(documentId), 1);
   const events = documentModel.getHistory(documentId).map((h) => h.event);
-  assert.deepEqual(events, ['uploaded', 'processing_started', 'completed']);
+  assert.deepEqual(events, ['uploaded', 'processing_started', 'extracted', 'completed']);
 });
 
 test('worker: a corrupted pdf fails at once with a clear message (no retry)', async () => {
@@ -71,6 +102,7 @@ test('worker: a corrupted pdf fails at once with a clear message (no retry)', as
   assert.match(getDoc(documentId).error_message, /Could not read PDF/i);
   assert.equal(getJob(jobId).status, 'failed');
   assert.equal(getJob(jobId).attempts, 1);
+  assert.equal(countInvoices(documentId), 0);
 });
 
 test('worker: temporary errors are retried, then fail after max attempts', async () => {

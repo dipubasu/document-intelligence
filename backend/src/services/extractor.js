@@ -130,6 +130,12 @@ function findUnsupported(invoice, text) {
       unsupported.push(field);
     }
   }
+    // A currency code returned by the model must be written in the document.
+  // A bare symbol like "$" is not enough: it can mean USD, CAD, AUD...
+  const currency = invoice.currency;
+  if (typeof currency === 'string' && !text.toUpperCase().includes(currency)) {
+    unsupported.push('currency');
+  }
   return unsupported;
 }
 
