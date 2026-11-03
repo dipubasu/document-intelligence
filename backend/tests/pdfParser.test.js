@@ -8,7 +8,7 @@ const { parsePdf } = require('../src/services/parsers/pdfParser');
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'docint-pdf-'));
 after(() => fs.rmSync(tmpDir, { recursive: true, force: true }));
 
-// ছোট একটা বৈধ PDF বানায়: texts-এর প্রতিটা উপাদান একটা পৃষ্ঠা (শুধু ASCII, () ছাড়া)
+// builds a tiny valid PDF: each item of texts is one page (ASCII only, no parentheses)
 function buildPdf(texts) {
   const objs = [];
   const n = texts.length;

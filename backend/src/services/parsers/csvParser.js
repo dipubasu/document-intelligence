@@ -1,10 +1,10 @@
 const fs = require('fs');
 const { parse } = require('csv-parse/sync');
 
-// একটা CSV থেকে সর্বোচ্চ এতগুলো সারি নেওয়া হবে (অতিরিক্ত হলে truncated: true)
+// take at most this many rows from one CSV (more than that sets truncated: true)
 const MAX_ROWS = 5000;
 
-// প্রথম লাইন দেখে বোঝা হয় আলাদাকারী চিহ্ন কোনটা (কমা, সেমিকোলন, ট্যাব বা |)
+// look at the first line to guess the delimiter (comma, semicolon, tab or |)
 function detectDelimiter(text) {
   const firstLine = text.replace(/^\uFEFF/, '').split(/\r?\n/, 1)[0] || '';
   let best = ',';
@@ -25,10 +25,10 @@ async function parseCsv(filePath) {
   let rows;
   try {
     rows = parse(raw, {
-      bom: true, // ফাইলের শুরুর অদৃশ্য BOM চিহ্ন বাদ
+      bom: true, // drop the invisible BOM mark at the start of the file
       delimiter: detectDelimiter(raw),
       skip_empty_lines: true,
-      relax_column_count: true, // সারিতে কলামের সংখ্যা কমবেশি হলেও চলবে
+      relax_column_count: true, // rows with fewer or more columns are fine
       trim: true,
     });
   } catch (err) {

@@ -20,7 +20,7 @@ const insertHistory = db.prepare(`
     (@document_id, @event, @from_status, @to_status, @detail, @duration_ms)
 `);
 
-// document + job + history একসাথে লেখা হয়। একটা ব্যর্থ হলে তিনটাই বাতিল (transaction)
+// document + job + history are written together; if one fails, all three are rolled back (transaction)
 const createWithJob = db.transaction((doc) => {
   const docInfo = insertDocument.run(doc);
   const documentId = Number(docInfo.lastInsertRowid);
@@ -63,7 +63,7 @@ function addHistory({ documentId, event, fromStatus, toStatus, detail, durationM
   });
 }
 
-// client-কে server-এর ভেতরের ফাইলের নাম (stored_name) দেখানো হবে না
+// do not show the client the internal file name (stored_name)
 function toPublic(doc) {
   if (!doc) return doc;
   const { stored_name, ...rest } = doc; // eslint-disable-line no-unused-vars

@@ -3,7 +3,7 @@ const path = require('path');
 const winston = require('winston');
 const config = require('../config');
 
-// logs/ ফোল্ডার না থাকলে বানায়
+// create the logs/ folder if it does not exist
 fs.mkdirSync(config.logDir, { recursive: true });
 
 const logger = winston.createLogger({
@@ -14,13 +14,13 @@ const logger = winston.createLogger({
     winston.format.json()
   ),
   transports: [
-    // ফাইলে JSON log, পরে খুঁজে দেখার জন্য
+    // JSON logs in a file, for searching later
     new winston.transports.File({
       filename: path.join(config.logDir, 'app.log'),
       maxsize: 5 * 1024 * 1024,
       maxFiles: 3,
     }),
-    // terminal এ পড়ার মতো সহজ log
+    // easy-to-read logs in the terminal
     new winston.transports.Console({
       format: winston.format.combine(
         winston.format.colorize(),

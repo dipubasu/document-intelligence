@@ -1,4 +1,4 @@
--- ১) আপলোড করা প্রতিটা ফাইলের metadata
+-- 1) metadata of every uploaded file
 CREATE TABLE IF NOT EXISTS documents (
   id            INTEGER PRIMARY KEY AUTOINCREMENT,
   original_name TEXT NOT NULL,
@@ -19,7 +19,7 @@ CREATE INDEX IF NOT EXISTS idx_documents_status ON documents(status);
 CREATE INDEX IF NOT EXISTS idx_documents_sha256 ON documents(sha256);
 CREATE INDEX IF NOT EXISTS idx_documents_review ON documents(needs_review);
 
--- ২) বের করা text: PDF এর প্রতি পৃষ্ঠা বা Excel এর প্রতি sheet এক সারি
+-- 2) extracted text: one row per PDF page or Excel sheet
 CREATE TABLE IF NOT EXISTS document_pages (
   id             INTEGER PRIMARY KEY AUTOINCREMENT,
   document_id    INTEGER NOT NULL REFERENCES documents(id) ON DELETE CASCADE,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS document_pages (
 );
 CREATE INDEX IF NOT EXISTS idx_pages_document ON document_pages(document_id);
 
--- ৩) background job queue (n8n এর execution queue এর মতো)
+-- 3) background job queue (like an n8n execution queue)
 CREATE TABLE IF NOT EXISTS jobs (
   id           INTEGER PRIMARY KEY AUTOINCREMENT,
   document_id  INTEGER NOT NULL REFERENCES documents(id) ON DELETE CASCADE,
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS jobs (
 );
 CREATE INDEX IF NOT EXISTS idx_jobs_status ON jobs(status);
 
--- ৪) AI এর বের করা invoice (এখন ১ document = ১ invoice, পরে অনেকটাও হতে পারে)
+-- 4) invoices extracted by the AI (now 1 document = 1 invoice, later it may be several)
 CREATE TABLE IF NOT EXISTS invoices (
   id                    INTEGER PRIMARY KEY AUTOINCREMENT,
   document_id           INTEGER NOT NULL REFERENCES documents(id) ON DELETE CASCADE,
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS invoice_line_items (
 );
 CREATE INDEX IF NOT EXISTS idx_items_invoice ON invoice_line_items(invoice_id);
 
--- ৫) validation এ যা যা ধরা পড়ল
+-- 5) problems found by validation
 CREATE TABLE IF NOT EXISTS validation_issues (
   id         INTEGER PRIMARY KEY AUTOINCREMENT,
   invoice_id INTEGER NOT NULL REFERENCES invoices(id) ON DELETE CASCADE,
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS validation_issues (
 );
 CREATE INDEX IF NOT EXISTS idx_issues_invoice ON validation_issues(invoice_id);
 
--- ৬) processing এর ইতিহাস ও সময়
+-- 6) processing history and timings
 CREATE TABLE IF NOT EXISTS processing_history (
   id          INTEGER PRIMARY KEY AUTOINCREMENT,
   document_id INTEGER NOT NULL REFERENCES documents(id) ON DELETE CASCADE,
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS processing_history (
 );
 CREATE INDEX IF NOT EXISTS idx_history_document ON processing_history(document_id);
 
--- ৭) manual সংশোধনের audit log
+-- 7) audit log of manual corrections
 CREATE TABLE IF NOT EXISTS corrections (
   id         INTEGER PRIMARY KEY AUTOINCREMENT,
   invoice_id INTEGER NOT NULL REFERENCES invoices(id) ON DELETE CASCADE,
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS corrections (
 );
 CREATE INDEX IF NOT EXISTS idx_corrections_invoice ON corrections(invoice_id);
 
--- ৮) semantic search এর vector (Float32 binary)
+-- 8) vectors for semantic search (Float32 binary)
 CREATE TABLE IF NOT EXISTS embeddings (
   invoice_id INTEGER PRIMARY KEY REFERENCES invoices(id) ON DELETE CASCADE,
   model      TEXT NOT NULL,

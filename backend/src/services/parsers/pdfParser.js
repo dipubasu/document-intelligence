@@ -2,9 +2,9 @@ const fs = require('fs');
 const { PDFParse, PasswordException, InvalidPDFException, FormatError } = require('pdf-parse');
 const config = require('../../config');
 
-// একটা পৃষ্ঠায় এর চেয়ে কম অক্ষর থাকলে ধরা হয় পৃষ্ঠাটা scan করা ছবি (OCR লাগবে)
+// a page with fewer characters than this is treated as a scanned image (needs OCR)
 const MIN_TEXT_CHARS = 20;
-// একবারে এতগুলো পৃষ্ঠা পড়া হয়, যাতে বড় PDF-এ memory ফুরিয়ে না যায়
+// read this many pages at a time so a big PDF does not run out of memory
 const DEFAULT_CHUNK_SIZE = 50;
 
 function describeError(err) {
@@ -23,7 +23,7 @@ function describeError(err) {
   return `Could not read PDF: ${err && err.message ? err.message : 'unknown error'}`;
 }
 
-// library নিজে পৃষ্ঠার শেষে "-- 1 of 3 --" চিহ্ন বসাতে পারে, সেটা বাদ দেওয়া হয়
+// the library may append a "-- 1 of 3 --" marker at the end of a page; remove it
 function cleanPageText(text) {
   return String(text || '').replace(/\n?-- \d+ of \d+ --\s*$/, '');
 }
@@ -32,14 +32,14 @@ async function parsePdf(filePath, options = {}) {
   const maxPages = options.maxPages ?? config.pdf.maxPages;
   const chunkSize = options.chunkSize ?? DEFAULT_CHUNK_SIZE;
 
-  // pdf library-কে Buffer না দিয়ে Uint8Array দেওয়াই নিরাপদ
+  // safer to give the pdf library a Uint8Array instead of a Buffer
   const data = new Uint8Array(await fs.promises.readFile(filePath));
 
   let parser;
   try {
     parser = new PDFParse({ data });
 
-    // আগে শুধু পৃষ্ঠার সংখ্যা জানা হয়, সীমা পার হলে text বের করাই হয় না
+    // first learn only the page count; if over the limit, no text is extracted at all
     const info = await parser.getInfo();
     const total = info.total;
     if (!total || total < 1) {

@@ -5,15 +5,15 @@ const { parseDocument } = require('./parsers/parseDocument');
 const documentModel = require('../models/documentModel');
 const jobModel = require('../models/jobModel');
 
-// permanent = আবার চেষ্টা করে লাভ নেই (ফাইল তো বদলাবে না)
+// permanent = retrying is pointless (the file will not change)
 function permanentError(message) {
   const err = new Error(message);
   err.permanent = true;
   return err;
 }
 
-// একটা document এর পুরো কাজ। এখন: parse করে পেজ সংরক্ষণ।
-// পরে এখানে LLM extraction আর validation যোগ হবে
+// The full job for one document. Now: parse and save the pages.
+// LLM extraction and validation will be added here later
 async function processDocument(job) {
   const doc = documentModel.getById(job.document_id);
   if (!doc) throw permanentError('Document record not found');
@@ -27,7 +27,7 @@ async function processDocument(job) {
       maxPages: config.pdf.maxPages,
     });
   } catch (err) {
-    err.permanent = true; // নষ্ট বা অসমর্থিত ফাইল আবার পড়লেও একই ফল
+    err.permanent = true; // a corrupt or unsupported file gives the same result if read again
     throw err;
   }
 

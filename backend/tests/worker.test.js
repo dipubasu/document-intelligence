@@ -4,7 +4,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-// আসল database এ হাত না দিয়ে আলাদা temp database ব্যবহার (config require এর আগে)
+// use a separate temp database so the real one is untouched (before requiring config)
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'pd-worker-'));
 process.env.DB_PATH = path.join(tmpDir, 'test.sqlite');
 process.env.UPLOAD_DIR = path.join(tmpDir, 'uploads');
@@ -20,7 +20,7 @@ test.after(() => {
   try {
     fs.rmSync(tmpDir, { recursive: true, force: true });
   } catch (e) {
-    // Windows এ ফাইল lock থাকলে temp ফোল্ডার থেকে যেতে পারে, ক্ষতি নেই
+    // on Windows a locked file can leave the temp folder behind, which is harmless
   }
 });
 
@@ -96,7 +96,7 @@ test('worker: temporary errors are retried, then fail after max attempts', async
 
 test('worker: a job stuck in processing goes back to queued after a restart', async () => {
   const { documentId, jobId } = addDoc(CSV, 'csv', 'csv');
-  jobModel.claimNextJob(); // server এখানে crash করল, job আটকে থাকল
+  jobModel.claimNextJob(); // the server "crashes" here and the job stays stuck
   assert.equal(getJob(jobId).status, 'processing');
 
   const r = jobModel.recoverStuckJobs();
@@ -104,7 +104,7 @@ test('worker: a job stuck in processing goes back to queued after a restart', as
   assert.equal(getJob(jobId).status, 'queued');
   assert.equal(getDoc(documentId).status, 'queued');
 
-  await worker.runJob(jobModel.claimNextJob()); // queue ফাঁকা রাখি
+  await worker.runJob(jobModel.claimNextJob()); // keep the queue empty
   assert.equal(getDoc(documentId).status, 'completed');
 });
 

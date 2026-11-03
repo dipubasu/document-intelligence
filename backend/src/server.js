@@ -11,14 +11,14 @@ const server = app.listen(config.port, () => {
 
 let shuttingDown = false;
 
-// Ctrl+C বা বন্ধ করার সময়: নতুন job নেওয়া বন্ধ, চলমান job শেষ হওয়া পর্যন্ত অপেক্ষা,
-// তারপর server ও database বন্ধ
+// On Ctrl+C or stop: stop taking new jobs, wait for running jobs to finish,
+// then close the server and the database
 async function shutdown(signal) {
   if (shuttingDown) return;
   shuttingDown = true;
   logger.info(`${signal} received, shutting down`);
 
-  // কোনো কিছু আটকে গেলে ১৫ সেকেন্ড পর জোর করে বন্ধ
+  // if anything hangs, force exit after 15 seconds
   setTimeout(() => process.exit(1), 15000).unref();
 
   await worker.stop();
@@ -30,7 +30,7 @@ async function shutdown(signal) {
 process.on('SIGINT', () => shutdown('SIGINT'));
 process.on('SIGTERM', () => shutdown('SIGTERM'));
 
-// কোথাও error ধরা না পড়লে অন্তত log এ থাকবে
+// anything not caught elsewhere will at least be in the log
 process.on('unhandledRejection', (reason) => {
   logger.error('unhandledRejection', { reason: String(reason) });
 });

@@ -7,8 +7,8 @@ let running = false;
 let timer = null;
 let active = 0;
 
-// একটা job চালায়। কখনো throw করে না, তাই loop মরে না।
-// processor আলাদা করে দেওয়া যায়, test এর সুবিধার জন্য
+// Run one job. Never throws, so the loop never dies.
+// the processor can be passed in, which makes testing easy
 async function runJob(job, processor = processDocument) {
   const started = Date.now();
   try {
@@ -62,7 +62,7 @@ function tick() {
       active -= 1;
       if (running) {
         clearTimeout(timer);
-        tick(); // কাজ শেষ হলে সাথে সাথে পরের job দেখে
+        tick(); // when a job finishes, look for the next one right away
       }
     });
   }
@@ -80,7 +80,7 @@ function start() {
   tick();
 }
 
-// নতুন job নেওয়া বন্ধ করে, চলমান job শেষ হওয়া পর্যন্ত অপেক্ষা করে
+// stop taking new jobs and wait until the running jobs finish
 function stop() {
   running = false;
   clearTimeout(timer);

@@ -8,7 +8,7 @@ function makeError(message, code) {
   return err;
 }
 
-// type -> parser (n8n Switch node এর মতো)
+// type -> parser (like an n8n Switch node)
 const PARSERS = {
   pdf: { name: 'pdf', run: parsePdf },
   csv: { name: 'csv', run: parseCsv },
@@ -35,7 +35,7 @@ async function parseDocument(filePath, detectedType, options = {}) {
 
   const result = await entry.run(filePath, options);
 
-  // সব parser এর output একই ছাঁচে
+  // every parser's output has the same shape
   return {
     parser: entry.name,
     pages: result.pages,

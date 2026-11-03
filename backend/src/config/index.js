@@ -1,20 +1,20 @@
 const path = require('path');
 const dotenv = require('dotenv');
 
-// backend/ ফোল্ডারের পথ (এই ফাইল থেকে দুই ধাপ ওপরে)
+// path of the backend/ folder (two levels above this file)
 const backendRoot = path.resolve(__dirname, '..', '..');
 
-// backend/.env পড়ে process.env এ বসায়
-// quiet: true মানে dotenv এর বাড়তি message বন্ধ
+// read backend/.env into process.env
+// quiet: true turns off dotenv's extra messages
 dotenv.config({ path: path.join(backendRoot, '.env'), quiet: true });
 
-// "50" লেখাকে সংখ্যা বানায়, ভুল হলে default ব্যবহার করে
+// turn a string like "50" into a number; fall back to the default if invalid
 function toInt(value, fallback) {
   const n = parseInt(value, 10);
   return Number.isFinite(n) ? n : fallback;
 }
 
-// .env এর relative path কে backend/ থেকে absolute path বানায়
+// turn a relative path from .env into an absolute path based on backend/
 function fromRoot(value, fallback) {
   return path.resolve(backendRoot, value || fallback);
 }

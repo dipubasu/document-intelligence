@@ -7,7 +7,7 @@ const logger = require('../utils/logger');
 
 const sanitizeFilename = sanitizeModule.sanitizeFilename || sanitizeModule;
 
-// বড় ফাইল পুরোটা memory-তে না তুলে stream করে sha256 বের করা হয়
+// compute sha256 by streaming, so a big file is never loaded fully into memory
 function sha256File(filePath) {
   return new Promise((resolve, reject) => {
     const hash = crypto.createHash('sha256');
@@ -41,7 +41,7 @@ async function upload(req, res) {
   for (const file of files) {
     const name = sanitizeFilename(file.originalname);
     try {
-      // ফাইলের ভেতরের magic bytes দেখে আসল ধরন মেলানো হয়
+      // compare the real type (magic bytes) with what the extension claims
       const check = await inspectFile(file.path, file.originalname);
       if (!check.ok) {
         await removeFile(file.path);
@@ -74,7 +74,7 @@ async function upload(req, res) {
     }
   }
 
-  // অন্তত একটা ফাইল নিলে 202 (Accepted), সব বাদ গেলে 400
+  // 202 (Accepted) if at least one file was accepted, 400 if all were rejected
   const status = accepted.length > 0 ? 202 : 400;
   return res.status(status).json({ accepted, rejected });
 }

@@ -1,18 +1,18 @@
 const path = require('path');
 
-// ব্যবহারকারীর দেওয়া ফাইলের নাম নিরাপদ করে।
-// "..\..\evil.pdf" বা "<script>.csv" এর মতো নাম থেকে বিপদ সরিয়ে দেয়।
+// Makes a user-supplied file name safe.
+// Removes danger from names like "..\..\evil.pdf" or "<script>.csv".
 function sanitizeFilename(name) {
-  // Windows এর \ কে / বানিয়ে শুধু শেষের ফাইলের নাম রাখে (folder অংশ ফেলে দেয়)
+  // turn Windows \ into / and keep only the last part (drop the folder part)
   const base = path.basename(String(name || '').replace(/\\/g, '/'));
 
   const cleaned = base
-    .replace(/[^A-Za-z0-9._ -]/g, '_') // অক্ষর, সংখ্যা, . _ - ও space ছাড়া সব _ হবে
-    .replace(/\.{2,}/g, '.') // ".." কে "." বানায়
-    .replace(/^\.+/, '') // শুরুর . মুছে দেয়
+    .replace(/[^A-Za-z0-9._ -]/g, '_') // everything except letters, digits, . _ - and space becomes _
+    .replace(/\.{2,}/g, '.') // turn ".." into "."
+    .replace(/^\.+/, '') // remove leading dots
     .trim();
 
-  const out = cleaned.slice(-150); // সর্বোচ্চ ১৫০ অক্ষর
+  const out = cleaned.slice(-150); // at most 150 characters
   return out || 'file';
 }
 

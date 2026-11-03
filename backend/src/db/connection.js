@@ -4,19 +4,19 @@ const Database = require('better-sqlite3');
 const config = require('../config');
 const logger = require('../utils/logger');
 
-// data/ ফোল্ডার না থাকলে বানায়
+// create the data/ folder if it does not exist
 fs.mkdirSync(path.dirname(config.dbPath), { recursive: true });
 
 const db = new Database(config.dbPath);
 
-// WAL: পড়া ও লেখা একসাথে চলতে পারে (API ও worker একই database ব্যবহার করবে)
+// WAL: reads and writes can happen together (the API and the worker share this database)
 db.pragma('journal_mode = WAL');
-// SQLite এ foreign key ডিফল্টে বন্ধ থাকে, চালু করতে হয়
+// SQLite has foreign keys off by default, so turn them on
 db.pragma('foreign_keys = ON');
-// অন্য কেউ লিখছে থাকলে সাথে সাথে error না দিয়ে ৫ সেকেন্ড অপেক্ষা
+// if another connection is writing, wait up to 5 seconds instead of failing at once
 db.pragma('busy_timeout = 5000');
 
-// schema.sql পড়ে table বানায় (আগে থেকে থাকলে কিছু বদলায় না)
+// read schema.sql and create the tables (existing tables are left unchanged)
 const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8');
 db.exec(schema);
 

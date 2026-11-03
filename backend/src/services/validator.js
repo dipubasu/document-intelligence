@@ -1,7 +1,7 @@
-// Invoice validation: খাঁটি function, database বা LLM লাগে না।
-// কোনো মান ঠিক করে না, বানায়ও না। শুধু সমস্যা জানায়।
+// Invoice validation: a pure function, needs no database or LLM.
+// It never fixes or invents a value. It only reports problems.
 
-const TOLERANCE = 0.01; // টাকার তুলনায় এই পর্যন্ত পার্থক্য মেনে নেওয়া হয়
+const TOLERANCE = 0.01; // largest money difference that is accepted
 const EPS = 1e-9;
 
 const REQUIRED_ERROR = ['invoice_number', 'invoice_date', 'supplier_name', 'total'];
@@ -21,15 +21,15 @@ function isRealIsoDate(s) {
 
 // invoice: { invoice_number, invoice_date, supplier_name, customer_name,
 //            subtotal, tax, total, currency, line_items: [...] }
-// context.others: DB তে থাকা অন্য invoice এর তালিকা
+// context.others: list of other invoices in the DB
 //   [{ document_id, supplier_name, invoice_number, total }]
-//   (যে invoice যাচাই হচ্ছে সেটা এখানে থাকবে না, caller বাদ দেবে)
+//   (the invoice being checked is not in it; the caller removes it)
 function validateInvoice(invoice, context = {}) {
   const inv = invoice || {};
   const issues = [];
   const add = (rule, severity, field, message) => issues.push({ rule, severity, field, message });
 
-  // ১. দরকারি field আছে কিনা
+  // 1. required fields present?
   for (const f of REQUIRED_ERROR) {
     if (isBlank(inv[f])) add('missing_field', 'error', f, `${f} is missing`);
   }
@@ -37,7 +37,7 @@ function validateInvoice(invoice, context = {}) {
     if (isBlank(inv[f])) add('missing_field', 'warning', f, `${f} is missing`);
   }
 
-  // ২. সংখ্যা ঠিক কিনা
+  // 2. numbers valid?
   for (const f of ['subtotal', 'tax', 'total']) {
     const v = inv[f];
     if (isBlank(v)) continue;
@@ -45,7 +45,7 @@ function validateInvoice(invoice, context = {}) {
     else if (v < 0) add('negative_amount', 'warning', f, `${f} is negative`);
   }
 
-  // ৩. তারিখ ও currency
+  // 3. date and currency
   if (!isBlank(inv.invoice_date) && !isRealIsoDate(inv.invoice_date)) {
     add('invalid_date', 'error', 'invoice_date', 'invoice_date is not a real date (expected YYYY-MM-DD)');
   }
@@ -53,7 +53,7 @@ function validateInvoice(invoice, context = {}) {
     add('invalid_currency', 'warning', 'currency', 'currency should be a 3-letter code such as USD');
   }
 
-  // ৪. subtotal + tax = total
+  // 4. subtotal + tax = total
   if (isNum(inv.subtotal) && isNum(inv.tax) && isNum(inv.total)) {
     const expected = round2(inv.subtotal + inv.tax);
     if (differs(expected, inv.total)) {
@@ -61,7 +61,7 @@ function validateInvoice(invoice, context = {}) {
     }
   }
 
-  // ৫. line item
+  // 5. line items
   const items = Array.isArray(inv.line_items) ? inv.line_items : [];
   if (items.length === 0) {
     add('missing_line_items', 'warning', 'line_items', 'no line items found');
@@ -86,7 +86,7 @@ function validateInvoice(invoice, context = {}) {
       }
     });
 
-    // line item এর যোগফল তুলনা (সব amount সংখ্যা হলেই)
+    // compare the sum of line items (only if every amount is a number)
     if (items.every((it) => it && isNum(it.amount))) {
       const sum = round2(items.reduce((s, it) => s + it.amount, 0));
       let reference = null;
@@ -104,7 +104,7 @@ function validateInvoice(invoice, context = {}) {
     }
   }
 
-  // ৬. duplicate এবং অন্য document এর সাথে মিল
+  // 6. duplicates and matches with other documents
   if (!isBlank(inv.invoice_number) && !isBlank(inv.supplier_name)) {
     const key = `${norm(inv.supplier_name)}|${norm(inv.invoice_number)}`;
     const others = Array.isArray(context.others) ? context.others : [];

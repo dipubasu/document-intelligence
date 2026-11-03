@@ -7,7 +7,7 @@ const uploadFiles = uploadModule.uploadFiles || uploadModule;
 
 const router = express.Router();
 
-// upload-এর জন্য আলাদা, কড়া limit: প্রতি IP থেকে মিনিটে ৩০টা
+// separate, stricter limit for uploads: 30 per minute per IP
 const uploadLimiter = rateLimit({
   windowMs: 60 * 1000,
   limit: 30,

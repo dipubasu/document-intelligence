@@ -18,8 +18,8 @@ const setDocProcessing = db.prepare(
   "UPDATE documents SET status = 'processing', error_message = NULL, updated_at = datetime('now') WHERE id = ?"
 );
 
-// সবচেয়ে পুরোনো queued job তুলে নেয়। select আর update একই transaction এ,
-// তাই দুই worker একই job পাবে না
+// Take the oldest queued job. Select and update run in one transaction,
+// so two workers can never get the same job
 const claimNextJob = db.transaction(() => {
   const job = selectNextQueued.get();
   if (!job) return null;
@@ -68,8 +68,8 @@ const setDocFailed = db.prepare(
   "UPDATE documents SET status = 'failed', error_message = ?, updated_at = datetime('now') WHERE id = ?"
 );
 
-// ব্যর্থ হলে: সাময়িক সমস্যা আর চেষ্টা বাকি থাকলে আবার queued, নইলে failed
-// ফেরত দেয় 'retry' অথবা 'failed'
+// On failure: if the error is temporary and attempts remain, queue again; otherwise mark failed
+// returns 'retry' or 'failed'
 const failJob = db.transaction((job, err, { permanent, durationMs }) => {
   const message = shortMessage(err);
   const willRetry = !permanent && job.attempts < job.max_attempts;
@@ -101,8 +101,8 @@ const failJob = db.transaction((job, err, { permanent, durationMs }) => {
   return 'failed';
 });
 
-// server বন্ধ বা crash হলে processing এ আটকে থাকা job গুলো ঠিক করে।
-// অনেকবার চেষ্টা হয়ে গেলে failed, নইলে আবার queued
+// Fix jobs stuck in processing after a server stop or crash.
+// Too many attempts already: failed; otherwise queued again
 const recoverStuckJobs = db.transaction(() => {
   const tooMany = "status = 'processing' AND attempts >= max_attempts";
   db.prepare(
@@ -139,7 +139,7 @@ const insertPage = db.prepare(`
     (@document_id, @page_number, @sheet_name, @text, @ocr_used, @ocr_confidence)
 `);
 
-// আগের পেজ মুছে নতুন পেজ লেখে (reprocess করলে দুবার জমবে না)
+// delete old pages and write the new ones (so reprocessing does not duplicate them)
 const savePages = db.transaction((documentId, pages) => {
   deletePages.run(documentId);
   for (const p of pages) {

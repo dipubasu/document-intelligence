@@ -7,7 +7,7 @@ const ExcelJS = require('exceljs');
 const { parseCsv, MAX_ROWS } = require('../src/services/parsers/csvParser');
 const { parseExcel } = require('../src/services/parsers/excelParser');
 
-// test শেষে মুছে ফেলার জন্য temp ফোল্ডার
+// temp folder, deleted after the tests
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'docint-'));
 after(() => fs.rmSync(tmpDir, { recursive: true, force: true }));
 

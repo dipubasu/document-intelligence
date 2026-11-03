@@ -9,12 +9,12 @@ const documentRoutes = require('./routes/documents');
 
 const app = express();
 
-// security header (helmet), শুধু নির্দিষ্ট frontend থেকে অনুমতি (cors)
+// security headers (helmet), and allow only the configured frontend origin (cors)
 app.use(helmet());
 app.use(cors({ origin: config.corsOrigin }));
 app.use(express.json({ limit: '1mb' }));
 
-// প্রতি IP থেকে মিনিটে ৩০০ এর বেশি request এলে আটকাবে
+// block an IP that sends more than 300 requests per minute
 app.use(
   '/api',
   rateLimit({
@@ -25,7 +25,7 @@ app.use(
   })
 );
 
-// health check: server ও database ঠিক আছে কিনা
+// health check: is the server up and the database reachable
 app.get('/api/health', (req, res) => {
   const sqlite = db.prepare('SELECT sqlite_version() AS v').get();
   const tables = db
@@ -39,15 +39,15 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// document-এর সব route এখানে জোড়া হলো
+// mount all document routes
 app.use('/api/documents', documentRoutes);
 
-// কোনো route না মিললে
+// no route matched
 app.use((req, res) => {
   res.status(404).json({ error: 'Not found' });
 });
 
-// যেকোনো error এখানে এসে পড়ে। ভেতরের বিস্তারিত client-কে দেখানো হয় না
+// any error ends up here; internal details are not shown to the client
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   const status = err.status || 500;

@@ -1,14 +1,14 @@
 const ExcelJS = require('exceljs');
 
-// প্রতি sheet থেকে সর্বোচ্চ এতগুলো সারি
+// take at most this many rows from each sheet
 const MAX_ROWS_PER_SHEET = 5000;
 
-// Excel-এর cell-এর মান নানা ধরনের হতে পারে (সংখ্যা, তারিখ, formula, rich text, link)
+// An Excel cell value can be of many kinds (number, date, formula, rich text, link)
 function cellToText(value) {
   if (value === null || value === undefined) return '';
   if (value instanceof Date) return value.toISOString().slice(0, 10);
   if (typeof value === 'object') {
-    if ('result' in value) return cellToText(value.result); // formula-র ফল
+    if ('result' in value) return cellToText(value.result); // result of a formula
     if (Array.isArray(value.richText)) return value.richText.map((r) => r.text).join('');
     if ('text' in value) return String(value.text); // hyperlink
     if ('error' in value) return String(value.error);
@@ -46,7 +46,7 @@ async function parseExcel(filePath) {
       lines.push(values.join(' | '));
     });
 
-    if (lines.length === 0) return; // ফাঁকা sheet বাদ
+    if (lines.length === 0) return; // skip an empty sheet
     rowCount += lines.length;
     pages.push({
       page_number: index + 1,

@@ -7,7 +7,7 @@ const { ALLOWED_EXTENSIONS } = require('../services/fileType');
 
 fs.mkdirSync(config.uploadDir, { recursive: true });
 
-// disk এ ফাইল রাখে random নামে। ব্যবহারকারীর দেওয়া নাম disk এর নামে আসে না
+// store files on disk under a random name; the user-supplied name never becomes the disk name
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, config.uploadDir),
   filename: (req, file, cb) => {
@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
   },
 });
 
-// ফাইল disk এ লেখার আগেই extension দেখে অসমর্থিত ধরন ফেরত দেয়
+// reject unsupported types by extension before the file is written to disk
 function fileFilter(req, file, cb) {
   const ext = path.extname(file.originalname).toLowerCase();
   if (!ALLOWED_EXTENSIONS.includes(ext)) {
@@ -38,7 +38,7 @@ const upload = multer({
 
 const handler = upload.array('files', config.upload.maxFilesPerUpload);
 
-// multer এর error কে ঠিক HTTP status দেয় (বেশি বড় ফাইল = 413, বাকি = 400)
+// map multer errors to proper HTTP status codes (too large = 413, others = 400)
 function uploadFiles(req, res, next) {
   handler(req, res, (err) => {
     if (!err) return next();
