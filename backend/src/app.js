@@ -6,6 +6,7 @@ const config = require('./config');
 const logger = require('./utils/logger');
 const db = require('./db/connection');
 const documentRoutes = require('./routes/documents');
+const invoiceRoutes = require('./routes/invoices');
 
 const app = express();
 
@@ -39,8 +40,9 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// mount all document routes
+// mount all routes
 app.use('/api/documents', documentRoutes);
+app.use('/api/invoices', invoiceRoutes);
 
 // no route matched
 app.use((req, res) => {
