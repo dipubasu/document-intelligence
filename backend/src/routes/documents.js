@@ -2,6 +2,7 @@ const express = require('express');
 const rateLimit = require('express-rate-limit');
 const uploadModule = require('../middleware/upload');
 const documentController = require('../controllers/documentController');
+const queryController = require('../controllers/queryController');
 
 const uploadFiles = uploadModule.uploadFiles || uploadModule;
 
@@ -16,6 +17,9 @@ const uploadLimiter = rateLimit({
 });
 
 router.post('/', uploadLimiter, uploadFiles, documentController.upload);
+router.get('/', queryController.list);
 router.get('/:id', documentController.getStatus);
+router.get('/:id/result', queryController.getResult);
+router.post('/:id/reprocess', queryController.reprocess);
 
 module.exports = router;
