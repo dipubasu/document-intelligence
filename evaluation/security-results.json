@@ -1,0 +1,386 @@
+{
+  "meta": {
+    "date": "2026-11-05T14:16:49.261Z",
+    "node": "v24.22.0",
+    "seconds": 11
+  },
+  "counts": {
+    "PASS": 49,
+    "FAIL": 0,
+    "INFO": 13
+  },
+  "results": [
+    {
+      "area": "Code",
+      "name": "sanitizeFilename on 10 hostile names",
+      "status": "PASS",
+      "detail": "all results safe"
+    },
+    {
+      "area": "Code",
+      "name": "Frontend source has no raw HTML insertion or eval (8 files)",
+      "status": "PASS",
+      "detail": "none found"
+    },
+    {
+      "area": "Code",
+      "name": "Backend source has no eval, new Function or child_process (33 files)",
+      "status": "PASS",
+      "detail": "none found"
+    },
+    {
+      "area": "Code",
+      "name": "No .env file is tracked by git",
+      "status": "PASS",
+      "detail": "112 tracked files checked"
+    },
+    {
+      "area": "Code",
+      "name": "No API key pattern in tracked text files (current files, not git history)",
+      "status": "PASS",
+      "detail": "none found"
+    },
+    {
+      "area": "Headers",
+      "name": "Health endpoint answers 200",
+      "status": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "area": "Headers",
+      "name": "X-Content-Type-Options is nosniff",
+      "status": "PASS",
+      "detail": "value: nosniff"
+    },
+    {
+      "area": "Headers",
+      "name": "Content-Security-Policy header is present",
+      "status": "PASS",
+      "detail": "present"
+    },
+    {
+      "area": "Headers",
+      "name": "X-Powered-By is not sent",
+      "status": "PASS",
+      "detail": "absent"
+    },
+    {
+      "area": "Headers",
+      "name": "x-frame-options header",
+      "status": "INFO",
+      "detail": "present"
+    },
+    {
+      "area": "Headers",
+      "name": "referrer-policy header",
+      "status": "INFO",
+      "detail": "present"
+    },
+    {
+      "area": "Headers",
+      "name": "strict-transport-security header",
+      "status": "INFO",
+      "detail": "present"
+    },
+    {
+      "area": "Headers",
+      "name": "cross-origin-resource-policy header",
+      "status": "INFO",
+      "detail": "present"
+    },
+    {
+      "area": "CORS",
+      "name": "Evil origin is not allowed on a normal request",
+      "status": "PASS",
+      "detail": "allow-origin: http://localhost:5173"
+    },
+    {
+      "area": "CORS",
+      "name": "Evil origin is not allowed on a PATCH preflight",
+      "status": "PASS",
+      "detail": "status 204, allow-origin: http://localhost:5173"
+    },
+    {
+      "area": "CORS",
+      "name": "Frontend dev origin localhost:5173 (if none, the evil-origin tests above prove nothing)",
+      "status": "INFO",
+      "detail": "allow-origin: http://localhost:5173"
+    },
+    {
+      "area": "Exposure",
+      "name": "Secret and source paths are not served (15 paths)",
+      "status": "PASS",
+      "detail": "all answered 400/403/404"
+    },
+    {
+      "area": "Upload",
+      "name": "Random bytes named .pdf are rejected",
+      "status": "PASS",
+      "detail": "status 400 (expected 400), files left on disk 0"
+    },
+    {
+      "area": "Upload",
+      "name": "PNG content named .pdf is rejected",
+      "status": "PASS",
+      "detail": "status 400 (expected 400), files left on disk 0"
+    },
+    {
+      "area": "Upload",
+      "name": "Plain text named .pdf is rejected",
+      "status": "PASS",
+      "detail": "status 400 (expected 400), files left on disk 0"
+    },
+    {
+      "area": "Upload",
+      "name": "An .exe file is rejected",
+      "status": "PASS",
+      "detail": "status 400 (expected 400), files left on disk 0"
+    },
+    {
+      "area": "Upload",
+      "name": "A 2 MB file is rejected when the limit is 1 MB",
+      "status": "PASS",
+      "detail": "status 413 (expected 413), files left on disk 0"
+    },
+    {
+      "area": "Upload",
+      "name": "11 files in one request are rejected (limit 10)",
+      "status": "PASS",
+      "detail": "status 400 (expected 400), files left on disk 0"
+    },
+    {
+      "area": "Upload",
+      "name": "A file under the wrong form field name is rejected",
+      "status": "PASS",
+      "detail": "status 400 (expected 400), files left on disk 0"
+    },
+    {
+      "area": "Upload",
+      "name": "Request without any file is rejected",
+      "status": "PASS",
+      "detail": "status 400"
+    },
+    {
+      "area": "Upload",
+      "name": "JSON body instead of multipart is rejected",
+      "status": "PASS",
+      "detail": "status 400"
+    },
+    {
+      "area": "Upload",
+      "name": "Empty .csv file",
+      "status": "INFO",
+      "detail": "status 400"
+    },
+    {
+      "area": "Upload",
+      "name": "One good file plus one bad extension in the same request",
+      "status": "INFO",
+      "detail": "status 400, files left on disk 0"
+    },
+    {
+      "area": "Upload",
+      "name": "Two valid CSV files with hostile names are accepted",
+      "status": "PASS",
+      "detail": "status 202"
+    },
+    {
+      "area": "Upload",
+      "name": "Stored original name is sanitized (script tag name)",
+      "status": "PASS",
+      "detail": "stored as script_.csv"
+    },
+    {
+      "area": "Upload",
+      "name": "Stored original name is sanitized (path traversal name)",
+      "status": "PASS",
+      "detail": "stored as evil.csv"
+    },
+    {
+      "area": "Upload",
+      "name": "Files on disk have random UUID names",
+      "status": "PASS",
+      "detail": "2 files, 0 without UUID name"
+    },
+    {
+      "area": "Upload",
+      "name": "Nothing was written under the hostile name or outside the upload folder",
+      "status": "PASS",
+      "detail": "nothing found"
+    },
+    {
+      "area": "Upload",
+      "name": "A stored upload file is not reachable by URL",
+      "status": "PASS",
+      "detail": "all 404"
+    },
+    {
+      "area": "Data",
+      "name": "Result containing HTML-like text is sent as JSON with nosniff",
+      "status": "PASS",
+      "detail": "content-type: application/json; charset=utf-8"
+    },
+    {
+      "area": "Data",
+      "name": "HTML-like supplier/customer text is stored as plain data",
+      "status": "INFO",
+      "detail": "supplier contains \"<\": false, customer contains \"<\": false"
+    },
+    {
+      "area": "Data",
+      "name": "Prompt injection example: supplier name was not changed to HACKED",
+      "status": "PASS",
+      "detail": "one example only, supplier length 15"
+    },
+    {
+      "area": "Data",
+      "name": "Prompt injection example: total was not changed to 999999",
+      "status": "PASS",
+      "detail": "total: 100"
+    },
+    {
+      "area": "Correction",
+      "name": "PATCH with bad invoice ids is rejected (5 ids)",
+      "status": "PASS",
+      "detail": "abc, -1, 1e3 and a huge number gave 400; 0 gave 400 or 404"
+    },
+    {
+      "area": "Correction",
+      "name": "HTML and SQL-like text in a correction is stored as plain text",
+      "status": "PASS",
+      "detail": "PATCH status 200, stored text identical: true"
+    },
+    {
+      "area": "Correction",
+      "name": "14 invalid correction bodies are rejected with 400",
+      "status": "PASS",
+      "detail": "all answered 400"
+    },
+    {
+      "area": "Correction",
+      "name": "A JSON body over 1 MB is rejected",
+      "status": "PASS",
+      "detail": "status 413"
+    },
+    {
+      "area": "Routes",
+      "name": "Bad ids and unknown routes give the expected status (13 cases)",
+      "status": "PASS",
+      "detail": "all as expected"
+    },
+    {
+      "area": "Routes",
+      "name": "A huge numeric document id does not cause a server error",
+      "status": "PASS",
+      "detail": "status 404"
+    },
+    {
+      "area": "Routes",
+      "name": "Reprocess of a completed document is refused with 409",
+      "status": "PASS",
+      "detail": "status 409"
+    },
+    {
+      "area": "Query and search",
+      "name": "Documents in the temporary database",
+      "status": "INFO",
+      "detail": "total 2"
+    },
+    {
+      "area": "Query and search",
+      "name": "Bad filter values give 200 or 400, never a server error (10 cases)",
+      "status": "PASS",
+      "detail": "limit=abc:400, limit=-1:400, limit=0:400, limit=1e3:400, offset=-5:400, offset=abc:400, status=bogus:400, needs_review=maybe:400, from=not-a-date:400, to=2026-13-45:200"
+    },
+    {
+      "area": "Query and search",
+      "name": "limit=100000 is rejected or capped at 100",
+      "status": "PASS",
+      "detail": "status 200, limit used 100"
+    },
+    {
+      "area": "Query and search",
+      "name": "3 SQL-like search texts cause no server error",
+      "status": "PASS",
+      "detail": "all answered 200 or 400"
+    },
+    {
+      "area": "Query and search",
+      "name": "SQL-like search text does not match every document",
+      "status": "PASS",
+      "detail": "matched all documents: false"
+    },
+    {
+      "area": "Query and search",
+      "name": "Tables are intact after the DROP TABLE attempts",
+      "status": "PASS",
+      "detail": "status 200, total before 2, after 2"
+    },
+    {
+      "area": "Query and search",
+      "name": "A 5000-character search text causes no server error",
+      "status": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "area": "Query and search",
+      "name": "Wildcard character % in keyword search",
+      "status": "INFO",
+      "detail": "status 200, matched 0 of 2 documents"
+    },
+    {
+      "area": "Query and search",
+      "name": "Wildcard character _ in keyword search",
+      "status": "INFO",
+      "detail": "status 200, matched 1 of 2 documents"
+    },
+    {
+      "area": "Query and search",
+      "name": "Search with unknown mode or without q causes no server error",
+      "status": "PASS",
+      "detail": "unknown mode: 400, no q: 400"
+    },
+    {
+      "area": "Rate limit",
+      "name": "Upload burst is limited with 429 within 45 requests",
+      "status": "PASS",
+      "detail": "first 429 on extra request 19"
+    },
+    {
+      "area": "Rate limit",
+      "name": "429 answer format",
+      "status": "INFO",
+      "detail": "content-type text/html; charset=utf-8, retry-after 52"
+    },
+    {
+      "area": "Rate limit",
+      "name": "General API burst is limited with 429 within 450 requests",
+      "status": "PASS",
+      "detail": "first 429 on request 197"
+    },
+    {
+      "area": "Errors",
+      "name": "No stack trace, file path or SQL driver text in any response (319 responses)",
+      "status": "PASS",
+      "detail": "none found"
+    },
+    {
+      "area": "Errors",
+      "name": "No request got a 5xx response",
+      "status": "PASS",
+      "detail": "none"
+    },
+    {
+      "area": "Errors",
+      "name": "Requests without any HTTP answer (connection errors)",
+      "status": "INFO",
+      "detail": "0"
+    },
+    {
+      "area": "Errors",
+      "name": "Backend process was still running at the end",
+      "status": "PASS",
+      "detail": "running"
+    }
+  ]
+}
