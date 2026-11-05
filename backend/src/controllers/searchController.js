@@ -1,13 +1,24 @@
 const { parseSearchQuery, keywordSearch } = require('../models/searchQueries');
+const { semanticSearch } = require('../models/semanticSearch');
+const { EmbeddingError } = require('../services/embeddings');
+const logger = require('../utils/logger');
 
-function search(req, res) {
+async function search(req, res) {
   const { params, error } = parseSearchQuery(req.query);
   if (error) return res.status(400).json({ error });
 
   if (params.mode === 'semantic') {
-    return res
-      .status(501)
-      .json({ error: 'Semantic search is not available yet. Use mode=keyword.' });
+    try {
+      return res.json(await semanticSearch(params));
+    } catch (err) {
+      if (err instanceof EmbeddingError) {
+        // The message is already safe: it never contains the provider's own text.
+        logger.warn('semantic search failed', { code: err.code, status: err.status });
+        const status = err.code === 'NOT_CONFIGURED' ? 503 : 502;
+        return res.status(status).json({ error: err.message });
+      }
+      throw err;
+    }
   }
   return res.json(keywordSearch(params));
 }

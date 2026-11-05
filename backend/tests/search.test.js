@@ -11,6 +11,7 @@ fs.mkdirSync(process.env.UPLOAD_DIR, { recursive: true });
 
 const { test, before, after } = require('node:test');
 const assert = require('node:assert');
+const config = require('../src/config');
 const db = require('../src/db/connection');
 const app = require('../src/app');
 const { parseSearchQuery, keywordSearch, makeSnippet } = require('../src/models/searchQueries');
@@ -187,17 +188,26 @@ test('makeSnippet: long text is cut around the match, short text is kept whole',
   assert.strictEqual(makeSnippet('hello needle there', 'needle'), 'hello needle there');
 });
 
-test('api: GET /api/search finds page text and refuses semantic mode for now', async () => {
+test('api: GET /api/search finds page text', async () => {
   const ok = await fetch(`${base}/api/search?q=${encodeURIComponent('net 30')}`);
   assert.strictEqual(ok.status, 200);
   const body = await ok.json();
   assert.strictEqual(body.mode, 'keyword');
   assert.strictEqual(body.items.length, 1);
   assert.strictEqual(body.items[0].pages[0].page_number, 2);
+});
 
-  const semantic = await fetch(`${base}/api/search?q=invoice&mode=semantic`);
-  assert.strictEqual(semantic.status, 501);
-  assert.match((await semantic.json()).error, /not available/);
+test('api: semantic mode answers 503 when embeddings are not configured', async () => {
+  // The key is emptied for this test, so no real call to the embedding service can happen.
+  const savedKey = config.gemini.apiKey;
+  config.gemini.apiKey = '';
+  try {
+    const res = await fetch(`${base}/api/search?q=invoice&mode=semantic`);
+    assert.strictEqual(res.status, 503);
+    assert.match((await res.json()).error, /not configured/);
+  } finally {
+    config.gemini.apiKey = savedKey;
+  }
 });
 
 test('api: GET /api/search with bad parameters gives 400', async () => {
