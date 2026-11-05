@@ -4,6 +4,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const ExcelJS = require('exceljs');
+const sharp = require('sharp');
 const { parseDocument } = require('../src/services/parsers/parseDocument');
 
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'pd-dispatch-'));
@@ -44,8 +45,25 @@ test('dispatcher: old xls gives a clear error', async () => {
   });
 });
 
-test('dispatcher: images report OCR not available yet', async () => {
-  for (const t of ['jpeg', 'png', 'tiff']) {
+test('dispatcher: png and jpeg go to the image OCR parser', async () => {
+  const p = path.join(tmpDir, 'pic.png');
+  await sharp({ create: { width: 200, height: 100, channels: 3, background: '#ffffff' } })
+    .png()
+    .toFile(p);
+
+  for (const t of ['png', 'jpeg']) {
+    const r = await parseDocument(p, t, {
+      recognize: async () => ({ text: 'Invoice No: A-1', confidence: 90 }),
+    });
+    assert.equal(r.parser, 'image-ocr');
+    assert.equal(r.pageCount, 1);
+    assert.equal(r.pages[0].ocr_used, true);
+    assert.match(r.pages[0].text, /Invoice No: A-1/);
+  }
+});
+
+test('dispatcher: tiff and unknown image types give a clear error', async () => {
+  for (const t of ['tiff', 'image']) {
     await assert.rejects(parseDocument('x.img', t), (err) => {
       assert.equal(err.code, 'OCR_NOT_AVAILABLE');
       return true;

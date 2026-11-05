@@ -1,6 +1,7 @@
 const { parseCsv } = require('./csvParser');
 const { parseExcel } = require('./excelParser');
 const { parsePdf } = require('./pdfParser');
+const { parseImage } = require('./imageParser');
 
 function makeError(message, code) {
   const err = new Error(message);
@@ -13,16 +14,22 @@ const PARSERS = {
   pdf: { name: 'pdf', run: parsePdf },
   csv: { name: 'csv', run: parseCsv },
   xlsx: { name: 'excel', run: parseExcel },
+  jpeg: { name: 'image-ocr', run: parseImage },
+  png: { name: 'image-ocr', run: parseImage },
 };
 
-const IMAGE_TYPES = ['jpeg', 'png', 'tiff', 'image'];
+// Image types that have no OCR support yet.
+const UNSUPPORTED_IMAGE_TYPES = ['tiff', 'image'];
 
 async function parseDocument(filePath, detectedType, options = {}) {
   const entry = PARSERS[detectedType];
 
   if (!entry) {
-    if (IMAGE_TYPES.includes(detectedType)) {
-      throw makeError('Image OCR is not available yet', 'OCR_NOT_AVAILABLE');
+    if (UNSUPPORTED_IMAGE_TYPES.includes(detectedType)) {
+      throw makeError(
+        'This image format is not supported yet. Please convert it to PNG or JPG',
+        'OCR_NOT_AVAILABLE'
+      );
     }
     if (detectedType === 'xls') {
       throw makeError(

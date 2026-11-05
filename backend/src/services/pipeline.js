@@ -27,7 +27,8 @@ async function runExtraction(text) {
     return await extractor.extractInvoice(text);
   } catch (err) {
     if (err.code === 'NO_TEXT') {
-      err.message = 'No readable text found. Scanned documents need OCR, which is not available yet';
+      err.message =
+        'No readable text found. Scanned PDFs are not supported yet, and a blurry image may give no text';
       err.permanent = true;
     } else if (err.name === 'LlmError' && !err.retryable) {
       err.permanent = true; // for example a missing or wrong API key
