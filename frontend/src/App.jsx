@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { api } from './api.js';
 import UploadBox from './components/UploadBox.jsx';
 import DocumentList from './components/DocumentList.jsx';
+import ResultPanel from './components/ResultPanel.jsx';
 
 const POLL_MS = 2000;
 
@@ -9,6 +10,7 @@ export default function App() {
   const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
   const [error, setError] = useState('');
+  const [selectedId, setSelectedId] = useState(null);
 
   const load = useCallback(async () => {
     try {
@@ -42,12 +44,32 @@ export default function App() {
     }
   }
 
+  // The panel reloads when the selected document changes its status or issue counts.
+  const selected = items.find((i) => i.id === selectedId);
+  const version = selected
+    ? `${selected.status}|${selected.needs_review}|${selected.error_count}|${selected.warning_count}`
+    : '';
+
   return (
     <main className="page">
       <h1>Document Intelligence</h1>
       {error && <p className="error">{error}</p>}
       <UploadBox onUploaded={load} />
-      <DocumentList items={items} total={total} onRetry={retry} />
+      {selectedId !== null && (
+        <ResultPanel
+          key={selectedId}
+          documentId={selectedId}
+          version={version}
+          onClose={() => setSelectedId(null)}
+        />
+      )}
+      <DocumentList
+        items={items}
+        total={total}
+        selectedId={selectedId}
+        onSelect={setSelectedId}
+        onRetry={retry}
+      />
     </main>
   );
 }
