@@ -99,7 +99,13 @@ test('extractor: a value that is not in the source text is marked uncertain', as
 });
 
 test('extractor: unknown field names in uncertain_fields are dropped', async () => {
-  const llm = mockLlm({ invoice_number: 'INV-100', uncertain_fields: ['total', 'colour', 'total'] });
+  // total has a value (found in TEXT), so the model's doubt about it is kept.
+  // "colour" is not a real field and the duplicate "total" is collapsed.
+  const llm = mockLlm({
+    invoice_number: 'INV-100',
+    total: 110.5,
+    uncertain_fields: ['total', 'colour', 'total'],
+  });
   const { invoice } = await extractInvoice(TEXT, { llm });
   assert.deepStrictEqual(invoice.uncertain_fields, ['total']);
 });
@@ -147,6 +153,7 @@ test('extractor: very long text is cut and reported as truncated', async () => {
   assert.strictEqual(truncated, true);
   assert.ok(spy.messages[1].content.length < MAX_TEXT_CHARS + 100);
 });
+
 test('extractor: a currency that is not written in the text is marked uncertain', async () => {
   const text = 'Invoice INV-5 Total: $10.00';
   const llm = mockLlm({ invoice_number: 'INV-5', total: 10, currency: 'USD' });

@@ -143,6 +143,13 @@ function findUnsupported(invoice, text) {
   return unsupported;
 }
 
+// "Uncertain" only makes sense for a field that has a value. A field that is empty
+// is already reported as missing by the validator, so a second warning is only noise.
+function hasValue(invoice, field) {
+  if (field === 'line_items') return invoice.line_items.length > 0;
+  return invoice[field] !== null && invoice[field] !== undefined;
+}
+
 function badJsonError(detail) {
   const err = new Error(`The model did not return a usable JSON object (${detail})`);
   err.code = 'BAD_LLM_JSON';
@@ -172,9 +179,8 @@ async function extractInvoice(text, { llm = llmClient } = {}) {
   }
 
   const invoice = normalize(parsed);
-  invoice.uncertain_fields = [
-    ...new Set([...invoice.uncertain_fields, ...findUnsupported(invoice, input)]),
-  ];
+  const allUncertain = [...new Set([...invoice.uncertain_fields, ...findUnsupported(invoice, input)])];
+  invoice.uncertain_fields = allUncertain.filter((field) => hasValue(invoice, field));
 
   return {
     invoice,

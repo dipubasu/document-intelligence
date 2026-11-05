@@ -26,8 +26,8 @@ function okResponse(content, finishReason = 'stop') {
   };
 }
 
-function errorResponse(status) {
-  return { ok: false, status, headers: { get: () => null }, text: async () => '{"error":"x"}' };
+function errorResponse(status, body = '{"error":"x"}') {
+  return { ok: false, status, headers: { get: () => null }, text: async () => body };
 }
 
 test('llm: sends JSON mode, temperature 0, model and auth header', async () => {
@@ -101,4 +101,43 @@ test('llm: never more than 2 requests run at the same time', async () => {
   };
   await Promise.all(Array.from({ length: 6 }, () => chatJson(MESSAGES, { baseDelayMs: 1 })));
   assert.ok(maxInFlight <= 2, `max in flight was ${maxInFlight}`);
+});
+
+test('llm: a 413 gives a short message and never shows the raw provider text', async () => {
+  let calls = 0;
+  globalThis.fetch = async () => {
+    calls += 1;
+    return errorResponse(
+      413,
+      '{"error":{"message":"Request too large in organization `org_secret123` on tokens per minute"}}'
+    );
+  };
+  await assert.rejects(
+    chatJson(MESSAGES, { baseDelayMs: 1 }),
+    (err) =>
+      err instanceof LlmError &&
+      err.status === 413 &&
+      err.retryable === false &&
+      err.message.includes('too large') &&
+      !err.message.includes('org_secret123') &&
+      !err.message.includes('tokens per minute')
+  );
+  assert.strictEqual(calls, 1);
+});
+
+test('llm: a 401 gives a short message about the key and is not retried', async () => {
+  let calls = 0;
+  globalThis.fetch = async () => {
+    calls += 1;
+    return errorResponse(401, '{"error":{"message":"Invalid API Key sk-secret-value"}}');
+  };
+  await assert.rejects(
+    chatJson(MESSAGES, { baseDelayMs: 1 }),
+    (err) =>
+      err instanceof LlmError &&
+      err.retryable === false &&
+      err.message.includes('API key') &&
+      !err.message.includes('sk-secret-value')
+  );
+  assert.strictEqual(calls, 1);
 });
