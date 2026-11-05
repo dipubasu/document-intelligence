@@ -45,8 +45,9 @@ export default function App() {
     }
   }
 
-  // Opening a document from the search results: show it and jump to the top of the page.
-  function openFromSearch(id) {
+  // Open a document from the list or from the search results:
+  // the result panel is at the top of the page, so jump there so it is visible.
+  function openDocument(id) {
     setSelectedId(id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -71,12 +72,12 @@ export default function App() {
           onCorrected={load}
         />
       )}
-      <SearchPanel onSelect={openFromSearch} />
+      <SearchPanel onSelect={openDocument} />
       <DocumentList
         items={items}
         total={total}
         selectedId={selectedId}
-        onSelect={setSelectedId}
+        onSelect={openDocument}
         onRetry={retry}
       />
     </main>
