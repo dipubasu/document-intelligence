@@ -51,6 +51,16 @@ function parseRetryAfter(res) {
   return null;
 }
 
+// Short, safe description of an HTTP error. The raw provider text is never
+// put into the error message, because it can contain account details.
+function describeStatus(status) {
+  if (status === 413) return 'the document text is too large for the model request limit';
+  if (status === 429) return 'the AI service is busy or a rate limit was reached';
+  if (status === 401 || status === 403) return 'the AI service rejected the API key or access';
+  if (status >= 500) return 'temporary problem at the AI service';
+  return 'the AI service rejected the request';
+}
+
 async function callOnce(messages, apiKey, model) {
   let res;
   try {
@@ -76,11 +86,16 @@ async function callOnce(messages, apiKey, model) {
 
   if (!res.ok) {
     const retryable = res.status === 429 || res.status >= 500;
-    throw new LlmError(`LLM API returned status ${res.status}: ${raw.slice(0, 200)}`, {
-      retryable,
-      status: res.status,
-      retryAfterMs: parseRetryAfter(res),
-    });
+    // Full provider text goes to the log only, never to the user.
+    logger.warn('llm api error', { status: res.status, body: raw.slice(0, 500) });
+    throw new LlmError(
+      `LLM API returned status ${res.status} (${describeStatus(res.status)})`,
+      {
+        retryable,
+        status: res.status,
+        retryAfterMs: parseRetryAfter(res),
+      },
+    );
   }
 
   let data;

@@ -76,7 +76,16 @@ async function upload(req, res) {
 
   // 202 (Accepted) if at least one file was accepted, 400 if all were rejected
   const status = accepted.length > 0 ? 202 : 400;
-  return res.status(status).json({ accepted, rejected });
+  const body = { accepted, rejected };
+  if (accepted.length === 0) {
+    // a short readable summary, so the UI can show why nothing was accepted
+    const reasons = rejected
+      .slice(0, 5)
+      .map((r) => `${r.name}: ${r.error}`)
+      .join('; ');
+    body.error = `No file was accepted. ${reasons}`;
+  }
+  return res.status(status).json(body);
 }
 
 // GET /api/documents/:id

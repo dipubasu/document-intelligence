@@ -4,8 +4,12 @@
 const llmClient = require('./llm');
 
 const PROMPT_VERSION = 'v1';
-// Safety limit for the prompt size. This is our own choice, not a model fact.
-const MAX_TEXT_CHARS = 40000;
+// Limit for the text sent to the model. On the Groq on_demand tier this model
+// allows 8000 tokens per minute (a real 413 error showed it), and the prompt,
+// the answer and the model's reasoning also count. About 4 characters are
+// roughly 1 token, so 12000 characters (about 3000 tokens) leaves room.
+// This is our own safe choice, not a model fact.
+const MAX_TEXT_CHARS = 12000;
 const MAX_LINE_ITEMS = 500;
 
 const TEXT_FIELDS = ['invoice_number', 'invoice_date', 'supplier_name', 'customer_name', 'currency'];
@@ -130,7 +134,7 @@ function findUnsupported(invoice, text) {
       unsupported.push(field);
     }
   }
-    // A currency code returned by the model must be written in the document.
+  // A currency code returned by the model must be written in the document.
   // A bare symbol like "$" is not enough: it can mean USD, CAD, AUD...
   const currency = invoice.currency;
   if (typeof currency === 'string' && !text.toUpperCase().includes(currency)) {
