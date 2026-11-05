@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api.js';
+import CorrectionForm from './CorrectionForm.jsx';
 
 const DASH = '\u2014';
 const SEP = ' \u00b7 ';
@@ -45,12 +46,14 @@ function IssueList({ title, items }) {
 }
 
 // Shows the full result of one document: status, extracted values, line items,
-// errors and warnings, and the correction history.
+// errors and warnings, the correction form and the correction history.
 // All values are shown as React text, so React escapes them (no XSS).
-export default function ResultPanel({ documentId, version, onClose }) {
+export default function ResultPanel({ documentId, version, onClose, onCorrected = () => {} }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
+  const [editing, setEditing] = useState(false);
+  const [savedMessage, setSavedMessage] = useState('');
 
   // Load again when the document changes or its status/issue counts change (version).
   useEffect(() => {
@@ -73,6 +76,19 @@ export default function ResultPanel({ documentId, version, onClose }) {
     };
   }, [documentId, version]);
 
+  // The server answers a correction with the new full result.
+  function handleSaved(result) {
+    setData(result);
+    setEditing(false);
+    const changed = Array.isArray(result.changed) ? result.changed : [];
+    setSavedMessage(
+      changed.length > 0
+        ? `Saved. Changed: ${changed.join(', ')}`
+        : 'Saved. No value changed (the ticked fields were confirmed).'
+    );
+    onCorrected();
+  }
+
   const doc = data ? data.document : null;
   const invoice = data ? data.invoice : null;
   const issues = data && Array.isArray(data.issues) ? data.issues : [];
@@ -81,6 +97,7 @@ export default function ResultPanel({ documentId, version, onClose }) {
   const warnings = issues.filter((i) => i.severity !== 'error');
   const uncertain = invoice && Array.isArray(invoice.uncertain_fields) ? invoice.uncertain_fields : [];
   const lineItems = invoice && Array.isArray(invoice.line_items) ? invoice.line_items : [];
+  const canCorrect = Boolean(doc && doc.status === 'completed' && invoice && invoice.id);
 
   return (
     <section className="card">
@@ -114,6 +131,27 @@ export default function ResultPanel({ documentId, version, onClose }) {
         <p className="notice">
           No invoice data was extracted. The document may not be an invoice. Nothing was guessed.
         </p>
+      )}
+
+      {savedMessage && <p className="ok">{savedMessage}</p>}
+
+      {canCorrect && !editing && (
+        <button
+          type="button"
+          onClick={() => {
+            setSavedMessage('');
+            setEditing(true);
+          }}
+        >
+          Correct values
+        </button>
+      )}
+      {canCorrect && editing && (
+        <CorrectionForm
+          invoice={invoice}
+          onSaved={handleSaved}
+          onCancel={() => setEditing(false)}
+        />
       )}
 
       {hasData(invoice) && (

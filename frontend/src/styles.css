@@ -73,6 +73,31 @@ h3 {
   border-left: 4px solid #9aa5b1;
   padding: 8px 12px;
 }
+.correction {
+  background: #f8fafc;
+  border: 1px solid #d9e0e6;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+.field input[type='text'] {
+  padding: 6px 8px;
+  border: 1px solid #b8c2cc;
+  border-radius: 6px;
+  font-size: 14px;
+}
 .badge {
   display: inline-block;
   padding: 2px 8px;

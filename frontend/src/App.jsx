@@ -61,6 +61,7 @@ export default function App() {
           documentId={selectedId}
           version={version}
           onClose={() => setSelectedId(null)}
+          onCorrected={load}
         />
       )}
       <DocumentList
