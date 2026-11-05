@@ -3,6 +3,7 @@ import { api } from './api.js';
 import UploadBox from './components/UploadBox.jsx';
 import DocumentList from './components/DocumentList.jsx';
 import ResultPanel from './components/ResultPanel.jsx';
+import SearchPanel from './components/SearchPanel.jsx';
 
 const POLL_MS = 2000;
 
@@ -44,6 +45,12 @@ export default function App() {
     }
   }
 
+  // Opening a document from the search results: show it and jump to the top of the page.
+  function openFromSearch(id) {
+    setSelectedId(id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   // The panel reloads when the selected document changes its status or issue counts.
   const selected = items.find((i) => i.id === selectedId);
   const version = selected
@@ -64,6 +71,7 @@ export default function App() {
           onCorrected={load}
         />
       )}
+      <SearchPanel onSelect={openFromSearch} />
       <DocumentList
         items={items}
         total={total}
