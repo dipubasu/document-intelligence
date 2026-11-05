@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #f4f6f8;
+  color: #1f2933;
+}
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+}
+.card {
+  background: #fff;
+  border: 1px solid #d9e0e6;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.error {
+  color: #b42318;
+}
