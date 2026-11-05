@@ -18,6 +18,17 @@
   border-radius: 4px;
 }
 
+.search-mode {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.search-mode label {
+  cursor: pointer;
+}
+
 .search-hint {
   margin: 6px 0 0;
   font-size: 12px;
@@ -27,6 +38,15 @@
 .search-error {
   margin: 8px 0 0;
   color: #b42318;
+}
+
+.search-note {
+  margin: 0 0 8px;
+  padding: 6px 8px;
+  font-size: 13px;
+  border-radius: 4px;
+  background: #fff1c2;
+  color: #7a4b00;
 }
 
 .search-summary {
@@ -66,6 +86,14 @@
   border-radius: 10px;
   background: #fff1c2;
   color: #7a4b00;
+}
+
+.search-score {
+  font-size: 12px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: #ddf4ff;
+  color: #0a3069;
 }
 
 .search-values,

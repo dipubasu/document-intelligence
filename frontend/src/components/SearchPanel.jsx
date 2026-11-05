@@ -5,6 +5,12 @@ import '../search.css';
 const MIN_LENGTH = 2;
 const MAX_LENGTH = 100;
 
+const HINTS = {
+  keyword: 'Keyword search: finds documents that contain your words.',
+  semantic:
+    'Semantic search: ranks invoices by meaning (Gemini embeddings). Every invoice gets a score and there is no cutoff, so a low score can be unrelated. Invoice text is sent to Gemini.',
+};
+
 function fieldsText(fields) {
   return Array.isArray(fields) ? fields.join(', ') : '';
 }
@@ -28,8 +34,13 @@ function pageLabel(page) {
   return `page ${page.page_number}${sheet}`;
 }
 
+function scoreText(item) {
+  return typeof item.score === 'number' ? item.score.toFixed(3) : '-';
+}
+
 export default function SearchPanel({ onSelect }) {
   const [query, setQuery] = useState('');
+  const [mode, setMode] = useState('keyword');
   const [result, setResult] = useState(null);
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
@@ -49,7 +60,7 @@ export default function SearchPanel({ onSelect }) {
     setMessage('');
     try {
       const data = await api(
-        `/api/search?q=${encodeURIComponent(q)}&mode=keyword&limit=20`
+        `/api/search?q=${encodeURIComponent(q)}&mode=${mode}&limit=20`
       );
       if (requestId !== lastRequest.current) return;
       setResult(data);
@@ -62,6 +73,16 @@ export default function SearchPanel({ onSelect }) {
     }
   }
 
+  function handleModeChange(next) {
+    if (next === mode) return;
+    // Drop the old result so it is never shown under the wrong mode.
+    lastRequest.current += 1;
+    setMode(next);
+    setResult(null);
+    setMessage('');
+    setBusy(false);
+  }
+
   function handleClear() {
     lastRequest.current += 1;
     setQuery('');
@@ -71,6 +92,18 @@ export default function SearchPanel({ onSelect }) {
   }
 
   const items = result ? result.items : [];
+  const isSemantic = result ? result.mode === 'semantic' : false;
+
+  function summaryText() {
+    if (result.total === 0) {
+      return isSemantic
+        ? 'No invoices to compare yet.'
+        : `No document matched "${result.query}".`;
+    }
+    return isSemantic
+      ? `${result.total} invoice(s) ranked for "${result.query}". Higher score means closer in meaning.`
+      : `${result.total} document(s) matched "${result.query}".`;
+  }
 
   return (
     <section className="search-panel">
@@ -90,18 +123,44 @@ export default function SearchPanel({ onSelect }) {
           Clear
         </button>
       </form>
-      <p className="search-hint">Keyword search. Semantic search is not available yet.</p>
+      <div className="search-mode">
+        <label>
+          <input
+            type="radio"
+            name="search-mode"
+            value="keyword"
+            checked={mode === 'keyword'}
+            onChange={() => handleModeChange('keyword')}
+          />{' '}
+          Keyword
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="search-mode"
+            value="semantic"
+            checked={mode === 'semantic'}
+            onChange={() => handleModeChange('semantic')}
+          />{' '}
+          Semantic
+        </label>
+      </div>
+      <p className="search-hint">{HINTS[mode]}</p>
 
       {message && <p className="search-error">{message}</p>}
 
       {result && (
         <div>
           <p className="search-summary">
-            {result.total === 0
-              ? `No document matched "${result.query}".`
-              : `${result.total} document(s) matched "${result.query}".`}
+            {summaryText()}
             {result.total > items.length && ` Showing the first ${items.length}.`}
           </p>
+          {result.not_indexed > 0 && (
+            <p className="search-note">
+              {result.not_indexed} invoice(s) are not indexed yet and are missing from this
+              ranking. Search again to index them.
+            </p>
+          )}
           <ul className="search-results">
             {items.map((item) => (
               <li key={item.document_id} className="search-item">
@@ -113,6 +172,9 @@ export default function SearchPanel({ onSelect }) {
                   {item.needs_review ? (
                     <span className="search-review">needs review</span>
                   ) : null}
+                  {isSemantic && (
+                    <span className="search-score">score {scoreText(item)}</span>
+                  )}
                   <button type="button" onClick={() => onSelect(item.document_id)}>
                     View
                   </button>
