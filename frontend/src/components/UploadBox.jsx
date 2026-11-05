@@ -2,19 +2,20 @@ import { useRef, useState } from 'react';
 import { api } from '../api.js';
 
 // Choose several files and send them in one request. The backend answers at once
-// (processing runs in the background), then the parent reloads the list.
+// (processing runs in the background). The answer lists which files were accepted
+// and which were rejected (with a reason), and we show both.
 export default function UploadBox({ onUploaded }) {
   const inputRef = useRef(null);
   const [chosen, setChosen] = useState(0);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
+  const [rejected, setRejected] = useState([]);
   const [error, setError] = useState('');
 
   async function upload(event) {
     event.preventDefault();
     const files = inputRef.current.files;
-    const n = files.length;
-    if (n === 0) {
+    if (files.length === 0) {
       setError('Choose at least one file first.');
       return;
     }
@@ -25,13 +26,19 @@ export default function UploadBox({ onUploaded }) {
     setBusy(true);
     setError('');
     setMessage('');
+    setRejected([]);
     try {
-      await api('/api/documents', { method: 'POST', body: form });
-      setMessage(`${n} file(s) sent. Processing continues in the background.`);
+      const data = await api('/api/documents', { method: 'POST', body: form });
+      const acceptedCount = data && Array.isArray(data.accepted) ? data.accepted.length : files.length;
+      const rejectedList = data && Array.isArray(data.rejected) ? data.rejected : [];
+
+      setMessage(`${acceptedCount} file(s) accepted. Processing continues in the background.`);
+      setRejected(rejectedList);
       inputRef.current.value = '';
       setChosen(0);
       onUploaded();
     } catch (err) {
+      // also covers the case where every file was rejected (HTTP 400 with an error text)
       setError(err.message);
     } finally {
       setBusy(false);
@@ -54,6 +61,18 @@ export default function UploadBox({ onUploaded }) {
         </button>
       </form>
       {message && <p className="ok">{message}</p>}
+      {rejected.length > 0 && (
+        <div className="error">
+          <p>{rejected.length} file(s) rejected:</p>
+          <ul>
+            {rejected.map((r, i) => (
+              <li key={i}>
+                {r.name}: {r.error}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       {error && <p className="error">{error}</p>}
     </section>
   );
