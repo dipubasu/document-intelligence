@@ -1,0 +1,13 @@
+Invoice No,ERR-5001
+Date,2026-03-25
+Supplier,Zenith Pet Supplies
+Customer,Happy Paws Clinic
+Currency,USD
+
+Description,Qty,Unit price,Amount
+Dog food bag,4,20.00,80.00
+Cat litter,5,4.00,20.00
+
+Subtotal,100.00
+Tax,10.00
+Total,125.00

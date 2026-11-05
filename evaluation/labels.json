@@ -1,0 +1,618 @@
+[
+  {
+    "file": "pdf-a-01.pdf",
+    "kind": "pdf",
+    "group": "normal",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "ALP-1001",
+        "invoice_date": "2026-01-12",
+        "supplier_name": "Alpine Supplies Co",
+        "customer_name": "Greenfield Clinic",
+        "subtotal": 303.8,
+        "tax": 24.3,
+        "total": 328.1,
+        "currency": "USD"
+      },
+      "line_item_count": 3
+    },
+    "note": "layout A"
+  },
+  {
+    "file": "pdf-a-02.pdf",
+    "kind": "pdf",
+    "group": "normal",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "BLU-1002",
+        "invoice_date": "2026-01-19",
+        "supplier_name": "Bluebird Office Furniture Ltd",
+        "customer_name": "Harbor Law Partners",
+        "subtotal": 1144.96,
+        "tax": 228.99,
+        "total": 1373.95,
+        "currency": "GBP"
+      },
+      "line_item_count": 3
+    },
+    "note": "layout A"
+  },
+  {
+    "file": "pdf-b-01.pdf",
+    "kind": "pdf",
+    "group": "normal",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "RV-2026-044",
+        "invoice_date": "2026-02-12",
+        "supplier_name": "Riverside Catering Services",
+        "customer_name": "Sunrise Hotel",
+        "subtotal": 1112.5,
+        "tax": 111.25,
+        "total": 1223.75,
+        "currency": "EUR"
+      },
+      "line_item_count": 2
+    },
+    "note": "layout B, date written as 12 Feb 2026"
+  },
+  {
+    "file": "pdf-b-02.pdf",
+    "kind": "pdf",
+    "group": "normal",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "KES-2026-045",
+        "invoice_date": "2026-02-20",
+        "supplier_name": "Kestrel Printing",
+        "customer_name": "Bright Future School",
+        "subtotal": 396,
+        "tax": 19.8,
+        "total": 415.8,
+        "currency": "USD"
+      },
+      "line_item_count": 3
+    },
+    "note": "layout B, date written as 20 Feb 2026"
+  },
+  {
+    "file": "pdf-c-01.pdf",
+    "kind": "pdf",
+    "group": "normal",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "DOC-77-3021",
+        "invoice_date": "2026-03-05",
+        "supplier_name": "Meridian Software Ltd",
+        "customer_name": "Oakfield Dental",
+        "subtotal": 2346,
+        "tax": 469.2,
+        "total": 2815.2,
+        "currency": "GBP"
+      },
+      "line_item_count": 3
+    },
+    "note": "layout C, date written as 5 March 2026"
+  },
+  {
+    "file": "pdf-multipage.pdf",
+    "kind": "pdf",
+    "group": "normal",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "MP-5001",
+        "invoice_date": "2026-03-10",
+        "supplier_name": "Summit Hardware Wholesale",
+        "customer_name": "City Builders",
+        "subtotal": 798.75,
+        "tax": 55.91,
+        "total": 854.66,
+        "currency": "USD"
+      },
+      "line_item_count": 14
+    },
+    "note": "2 pages, 14 line items"
+  },
+  {
+    "file": "not-invoice.pdf",
+    "kind": "pdf",
+    "group": "not_invoice",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": true,
+      "issues": [],
+      "fields": {
+        "invoice_number": null,
+        "invoice_date": null,
+        "supplier_name": null,
+        "customer_name": null,
+        "subtotal": null,
+        "tax": null,
+        "total": null,
+        "currency": null
+      },
+      "line_item_count": 0
+    },
+    "note": "must not invent values"
+  },
+  {
+    "file": "csv-kv-comma.csv",
+    "kind": "csv",
+    "group": "normal",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "CSV-2001",
+        "invoice_date": "2026-02-03",
+        "supplier_name": "Lakeside Stationery",
+        "customer_name": "Maple Grove School",
+        "subtotal": 165,
+        "tax": 8.25,
+        "total": 173.25,
+        "currency": "USD"
+      },
+      "line_item_count": 3
+    },
+    "note": "key/value + table, comma"
+  },
+  {
+    "file": "csv-kv-semicolon.csv",
+    "kind": "csv",
+    "group": "normal",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "CSV-2002",
+        "invoice_date": "2026-02-17",
+        "supplier_name": "Orchid Medical Supplies",
+        "customer_name": "Delta Cafe",
+        "subtotal": 111,
+        "tax": 11.1,
+        "total": 122.1,
+        "currency": "EUR"
+      },
+      "line_item_count": 2
+    },
+    "note": "semicolon delimiter"
+  },
+  {
+    "file": "csv-flat.csv",
+    "kind": "csv",
+    "group": "normal",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "CSV-2003",
+        "invoice_date": "2026-02-24",
+        "supplier_name": "Harbor & Sons, Ltd",
+        "customer_name": "Delta Cafe",
+        "subtotal": 271.2,
+        "tax": 54.24,
+        "total": 325.44,
+        "currency": "GBP"
+      },
+      "line_item_count": 3
+    },
+    "note": "one row per line item, supplier name contains a comma"
+  },
+  {
+    "file": "xlsx-single.xlsx",
+    "kind": "xlsx",
+    "group": "normal",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "XLS-3001",
+        "invoice_date": "2026-03-02",
+        "supplier_name": "Cobalt Logistics",
+        "customer_name": "Evergreen Pharmacy",
+        "subtotal": 830,
+        "tax": 49.8,
+        "total": 879.8,
+        "currency": "USD"
+      },
+      "line_item_count": 2
+    },
+    "note": "single sheet"
+  },
+  {
+    "file": "xlsx-multisheet.xlsx",
+    "kind": "xlsx",
+    "group": "normal",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "XLS-3002",
+        "invoice_date": "2026-03-09",
+        "supplier_name": "Juniper Cloud Services",
+        "customer_name": "Paper Lane Studio",
+        "subtotal": 468,
+        "tax": 88.92,
+        "total": 556.92,
+        "currency": "EUR"
+      },
+      "line_item_count": 3
+    },
+    "note": "header on sheet 1, items on sheet 2"
+  },
+  {
+    "file": "xlsx-title.xlsx",
+    "kind": "xlsx",
+    "group": "normal",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "XLS-3003",
+        "invoice_date": "2026-03-16",
+        "supplier_name": "Falcon Auto Parts",
+        "customer_name": "Quick Fix Garage",
+        "subtotal": 388.4,
+        "tax": 31.07,
+        "total": 419.47,
+        "currency": "USD"
+      },
+      "line_item_count": 3
+    },
+    "note": "title row above the data"
+  },
+  {
+    "file": "img-clean.png",
+    "kind": "image",
+    "group": "image",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "IMG-4001",
+        "invoice_date": "2026-03-20",
+        "supplier_name": "Granite Building Supplies",
+        "customer_name": "Hillview Academy",
+        "subtotal": 443,
+        "tax": 39.87,
+        "total": 482.87,
+        "currency": "USD"
+      },
+      "line_item_count": 3
+    },
+    "note": "clean synthetic PNG"
+  },
+  {
+    "file": "img-poor.jpg",
+    "kind": "image",
+    "group": "image",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "IMG-4002",
+        "invoice_date": "2026-03-21",
+        "supplier_name": "Tidewater Seafood Ltd",
+        "customer_name": "Blue Anchor Restaurant",
+        "subtotal": 498.5,
+        "tax": 49.85,
+        "total": 548.35,
+        "currency": "USD"
+      },
+      "line_item_count": 2
+    },
+    "note": "rotated 2 deg, blur, width 650, JPEG quality 35"
+  },
+  {
+    "file": "img-very-poor.jpg",
+    "kind": "image",
+    "group": "image",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "IMG-4003",
+        "invoice_date": "2026-03-22",
+        "supplier_name": "Copperfield Books",
+        "customer_name": "Rose Valley Library",
+        "subtotal": 344.7,
+        "tax": 17.24,
+        "total": 361.94,
+        "currency": "USD"
+      },
+      "line_item_count": 3
+    },
+    "note": "rotated 4 deg, strong blur, width 480, JPEG quality 20"
+  },
+  {
+    "file": "err-total-mismatch.csv",
+    "kind": "csv",
+    "group": "error",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": true,
+      "issues": [
+        "total_mismatch"
+      ],
+      "fields": {
+        "invoice_number": "ERR-5001",
+        "invoice_date": "2026-03-25",
+        "supplier_name": "Zenith Pet Supplies",
+        "customer_name": "Happy Paws Clinic",
+        "subtotal": 100,
+        "tax": 10,
+        "total": 125,
+        "currency": "USD"
+      },
+      "line_item_count": 2
+    },
+    "note": "printed total 125, but subtotal 100 + tax 10"
+  },
+  {
+    "file": "err-missing-number.pdf",
+    "kind": "pdf",
+    "group": "error",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": true,
+      "issues": [],
+      "fields": {
+        "invoice_number": null,
+        "invoice_date": "2026-03-26",
+        "supplier_name": "Juno Cleaning Services",
+        "customer_name": "Lotus Yoga Studio",
+        "subtotal": 380,
+        "tax": 76,
+        "total": 456,
+        "currency": "GBP"
+      },
+      "line_item_count": 2
+    },
+    "note": "invoice number is not in the document"
+  },
+  {
+    "file": "err-lines-mismatch.xlsx",
+    "kind": "xlsx",
+    "group": "error",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": true,
+      "issues": [],
+      "fields": {
+        "invoice_number": "ERR-5003",
+        "invoice_date": "2026-03-27",
+        "supplier_name": "Nimbus Auto Care",
+        "customer_name": "Roadrunner Couriers",
+        "subtotal": 100,
+        "tax": 10,
+        "total": 110,
+        "currency": "USD"
+      },
+      "line_item_count": 2
+    },
+    "note": "line items add up to 90, but subtotal says 100"
+  },
+  {
+    "file": "corrupt.pdf",
+    "kind": "corrupt",
+    "group": "corrupt",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "failed"
+    },
+    "note": "PDF header, damaged body"
+  },
+  {
+    "file": "corrupt.png",
+    "kind": "corrupt",
+    "group": "corrupt",
+    "phase": 1,
+    "expect": {
+      "upload": "accepted",
+      "status": "failed"
+    },
+    "note": "PNG header, damaged body"
+  },
+  {
+    "file": "reject-fake.pdf",
+    "kind": "rejected",
+    "group": "reject",
+    "phase": 1,
+    "expect": {
+      "upload": "rejected"
+    },
+    "note": "text file pretending to be a PDF"
+  },
+  {
+    "file": "dup-copy-of-csv-2001.csv",
+    "kind": "csv",
+    "group": "duplicate",
+    "phase": 2,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": true,
+      "issues": [
+        "duplicate_file"
+      ],
+      "fields": {
+        "invoice_number": "CSV-2001",
+        "invoice_date": "2026-02-03",
+        "supplier_name": "Lakeside Stationery",
+        "customer_name": "Maple Grove School",
+        "subtotal": 165,
+        "tax": 8.25,
+        "total": 173.25,
+        "currency": "USD"
+      },
+      "line_item_count": 3
+    },
+    "note": "byte-identical copy of csv-kv-comma.csv"
+  },
+  {
+    "file": "pair-a.pdf",
+    "kind": "pdf",
+    "group": "pair",
+    "phase": 2,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "PAIR-6001",
+        "invoice_date": "2026-03-28",
+        "supplier_name": "Orion Electrical Wholesale",
+        "customer_name": "Sparks Repair Shop",
+        "subtotal": 331,
+        "tax": 33.1,
+        "total": 364.1,
+        "currency": "USD"
+      },
+      "line_item_count": 2
+    },
+    "note": "first document of a matching PDF/Excel pair"
+  },
+  {
+    "file": "pair-a.xlsx",
+    "kind": "xlsx",
+    "group": "pair",
+    "phase": 2,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": true,
+      "issues": [
+        "duplicate_invoice"
+      ],
+      "fields": {
+        "invoice_number": "PAIR-6001",
+        "invoice_date": "2026-03-28",
+        "supplier_name": "Orion Electrical Wholesale",
+        "customer_name": "Sparks Repair Shop",
+        "subtotal": 331,
+        "tax": 33.1,
+        "total": 364.1,
+        "currency": "USD"
+      },
+      "line_item_count": 2
+    },
+    "note": "same invoice and same values as pair-a.pdf"
+  },
+  {
+    "file": "pair-b.pdf",
+    "kind": "pdf",
+    "group": "pair",
+    "phase": 2,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": false,
+      "issues": [],
+      "fields": {
+        "invoice_number": "PAIR-6002",
+        "invoice_date": "2026-03-29",
+        "supplier_name": "Vertex Lab Equipment",
+        "customer_name": "City Hospital Lab",
+        "subtotal": 312,
+        "tax": 62.4,
+        "total": 374.4,
+        "currency": "GBP"
+      },
+      "line_item_count": 2
+    },
+    "note": "first document of a PDF/Excel pair with different totals"
+  },
+  {
+    "file": "pair-b.xlsx",
+    "kind": "xlsx",
+    "group": "pair",
+    "phase": 2,
+    "expect": {
+      "upload": "accepted",
+      "status": "completed",
+      "needs_review": true,
+      "issues": [
+        "cross_document_mismatch"
+      ],
+      "fields": {
+        "invoice_number": "PAIR-6002",
+        "invoice_date": "2026-03-29",
+        "supplier_name": "Vertex Lab Equipment",
+        "customer_name": "City Hospital Lab",
+        "subtotal": 343,
+        "tax": 68.6,
+        "total": 411.6,
+        "currency": "GBP"
+      },
+      "line_item_count": 2
+    },
+    "note": "same invoice number as pair-b.pdf, but a different total"
+  }
+]

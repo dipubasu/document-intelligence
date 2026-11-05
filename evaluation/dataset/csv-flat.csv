@@ -1,0 +1,4 @@
+invoice_number,invoice_date,supplier,customer,currency,description,quantity,unit_price,line_amount,subtotal,tax,total
+CSV-2003,2026-02-24,"Harbor & Sons, Ltd",Delta Cafe,GBP,Coffee beans 1kg,12,14.50,174.00,271.20,54.24,325.44
+CSV-2003,2026-02-24,"Harbor & Sons, Ltd",Delta Cafe,GBP,Paper cups 500,6,9.20,55.20,271.20,54.24,325.44
+CSV-2003,2026-02-24,"Harbor & Sons, Ltd",Delta Cafe,GBP,Napkins pack,20,2.10,42.00,271.20,54.24,325.44

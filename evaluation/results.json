@@ -1,0 +1,2134 @@
+{
+  "meta": {
+    "startedAt": "2026-11-05T12:36:20.833Z",
+    "phase1Ms": 92762,
+    "phase1Count": 22,
+    "phase2Ms": 22199,
+    "phase2Count": 5
+  },
+  "summary": {
+    "extractionDocs": 24,
+    "fieldsTotal": 192,
+    "fieldsCorrect": 184,
+    "exactDocs": 23,
+    "lineItemsOk": 23,
+    "byField": [
+      {
+        "field": "invoice_number",
+        "correct": 23,
+        "total": 24
+      },
+      {
+        "field": "invoice_date",
+        "correct": 23,
+        "total": 24
+      },
+      {
+        "field": "supplier_name",
+        "correct": 23,
+        "total": 24
+      },
+      {
+        "field": "customer_name",
+        "correct": 23,
+        "total": 24
+      },
+      {
+        "field": "subtotal",
+        "correct": 23,
+        "total": 24
+      },
+      {
+        "field": "tax",
+        "correct": 23,
+        "total": 24
+      },
+      {
+        "field": "total",
+        "correct": 23,
+        "total": 24
+      },
+      {
+        "field": "currency",
+        "correct": 23,
+        "total": 24
+      }
+    ],
+    "byKind": [
+      {
+        "kind": "pdf",
+        "docs": 10,
+        "correct": 80,
+        "total": 80,
+        "exact": 10,
+        "time": {
+          "n": 10,
+          "avg": 1954.7,
+          "median": 1263,
+          "min": 839,
+          "max": 5902
+        }
+      },
+      {
+        "kind": "csv",
+        "docs": 5,
+        "correct": 40,
+        "total": 40,
+        "exact": 5,
+        "time": {
+          "n": 5,
+          "avg": 6709.4,
+          "median": 4760,
+          "min": 6,
+          "max": 18314
+        }
+      },
+      {
+        "kind": "xlsx",
+        "docs": 6,
+        "correct": 48,
+        "total": 48,
+        "exact": 6,
+        "time": {
+          "n": 6,
+          "avg": 11378.666666666666,
+          "median": 9676,
+          "min": 4414,
+          "max": 22901
+        }
+      },
+      {
+        "kind": "image",
+        "docs": 3,
+        "correct": 16,
+        "total": 24,
+        "exact": 2,
+        "time": {
+          "n": 3,
+          "avg": 9238,
+          "median": 8773,
+          "min": 7764,
+          "max": 11177
+        }
+      }
+    ],
+    "invented": [],
+    "mistakes": [
+      {
+        "file": "img-very-poor.jpg",
+        "field": "invoice_number",
+        "expected": "IMG-4003",
+        "actual": null
+      },
+      {
+        "file": "img-very-poor.jpg",
+        "field": "invoice_date",
+        "expected": "2026-03-22",
+        "actual": null
+      },
+      {
+        "file": "img-very-poor.jpg",
+        "field": "supplier_name",
+        "expected": "Copperfield Books",
+        "actual": null
+      },
+      {
+        "file": "img-very-poor.jpg",
+        "field": "customer_name",
+        "expected": "Rose Valley Library",
+        "actual": null
+      },
+      {
+        "file": "img-very-poor.jpg",
+        "field": "subtotal",
+        "expected": 344.7,
+        "actual": null
+      },
+      {
+        "file": "img-very-poor.jpg",
+        "field": "tax",
+        "expected": 17.24,
+        "actual": null
+      },
+      {
+        "file": "img-very-poor.jpg",
+        "field": "total",
+        "expected": 361.94,
+        "actual": null
+      },
+      {
+        "file": "img-very-poor.jpg",
+        "field": "currency",
+        "expected": "USD",
+        "actual": null
+      }
+    ],
+    "review": {
+      "tp": 7,
+      "fn": 0,
+      "fp": 1,
+      "tn": 16
+    },
+    "rules": [
+      {
+        "file": "not-invoice.pdf",
+        "rule": "missing_field",
+        "found": true
+      },
+      {
+        "file": "err-total-mismatch.csv",
+        "rule": "total_mismatch",
+        "found": true
+      },
+      {
+        "file": "err-missing-number.pdf",
+        "rule": "missing_field",
+        "found": true
+      },
+      {
+        "file": "err-lines-mismatch.xlsx",
+        "rule": "line_items_mismatch",
+        "found": true
+      },
+      {
+        "file": "dup-copy-of-csv-2001.csv",
+        "rule": "duplicate_file",
+        "found": true
+      },
+      {
+        "file": "pair-a.xlsx",
+        "rule": "duplicate_invoice",
+        "found": true
+      },
+      {
+        "file": "pair-b.xlsx",
+        "rule": "cross_document_mismatch",
+        "found": true
+      }
+    ],
+    "completed": 24,
+    "failedUnexpected": 0,
+    "otherOutcome": 0,
+    "badFiles": 3,
+    "badHandled": 3,
+    "timeAll": {
+      "n": 24,
+      "avg": 6211.666666666667,
+      "median": 4587,
+      "min": 6,
+      "max": 22901
+    },
+    "timeNoReuse": {
+      "n": 23,
+      "avg": 6481.478260869565,
+      "median": 4760,
+      "min": 839,
+      "max": 22901
+    },
+    "reusedCount": 1
+  },
+  "records": [
+    {
+      "file": "pdf-a-01.pdf",
+      "kind": "pdf",
+      "group": "normal",
+      "phase": 1,
+      "note": "layout A",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 1,
+      "jobMs": 1903,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "ALP-1001",
+          "actual": "ALP-1001",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-01-12",
+          "actual": "2026-01-12",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Alpine Supplies Co",
+          "actual": "Alpine Supplies Co",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Greenfield Clinic",
+          "actual": "Greenfield Clinic",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 303.8,
+          "actual": 303.8,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 24.3,
+          "actual": 24.3,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 328.1,
+          "actual": 328.1,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": "USD",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 3,
+      "lineItemsActual": 3,
+      "lineItemsOk": true
+    },
+    {
+      "file": "pdf-a-02.pdf",
+      "kind": "pdf",
+      "group": "normal",
+      "phase": 1,
+      "note": "layout A",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 2,
+      "jobMs": 1449,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "BLU-1002",
+          "actual": "BLU-1002",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-01-19",
+          "actual": "2026-01-19",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Bluebird Office Furniture Ltd",
+          "actual": "Bluebird Office Furniture Ltd",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Harbor Law Partners",
+          "actual": "Harbor Law Partners",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 1144.96,
+          "actual": 1144.96,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 228.99,
+          "actual": 228.99,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 1373.95,
+          "actual": 1373.95,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "GBP",
+          "actual": "GBP",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 3,
+      "lineItemsActual": 3,
+      "lineItemsOk": true
+    },
+    {
+      "file": "pdf-b-01.pdf",
+      "kind": "pdf",
+      "group": "normal",
+      "phase": 1,
+      "note": "layout B, date written as 12 Feb 2026",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 3,
+      "jobMs": 991,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "RV-2026-044",
+          "actual": "RV-2026-044",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-02-12",
+          "actual": "2026-02-12",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Riverside Catering Services",
+          "actual": "Riverside Catering Services",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Sunrise Hotel",
+          "actual": "Sunrise Hotel",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 1112.5,
+          "actual": 1112.5,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 111.25,
+          "actual": 111.25,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 1223.75,
+          "actual": 1223.75,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "EUR",
+          "actual": "EUR",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 2,
+      "lineItemsActual": 2,
+      "lineItemsOk": true
+    },
+    {
+      "file": "pdf-b-02.pdf",
+      "kind": "pdf",
+      "group": "normal",
+      "phase": 1,
+      "note": "layout B, date written as 20 Feb 2026",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 4,
+      "jobMs": 960,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "KES-2026-045",
+          "actual": "KES-2026-045",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-02-20",
+          "actual": "2026-02-20",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Kestrel Printing",
+          "actual": "Kestrel Printing",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Bright Future School",
+          "actual": "Bright Future School",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 396,
+          "actual": 396,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 19.8,
+          "actual": 19.8,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 415.8,
+          "actual": 415.8,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": "USD",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 3,
+      "lineItemsActual": 3,
+      "lineItemsOk": true
+    },
+    {
+      "file": "pdf-c-01.pdf",
+      "kind": "pdf",
+      "group": "normal",
+      "phase": 1,
+      "note": "layout C, date written as 5 March 2026",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 5,
+      "jobMs": 1224,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "DOC-77-3021",
+          "actual": "DOC-77-3021",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-05",
+          "actual": "2026-03-05",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Meridian Software Ltd",
+          "actual": "Meridian Software Ltd",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Oakfield Dental",
+          "actual": "Oakfield Dental",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 2346,
+          "actual": 2346,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 469.2,
+          "actual": 469.2,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 2815.2,
+          "actual": 2815.2,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "GBP",
+          "actual": "GBP",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 3,
+      "lineItemsActual": 3,
+      "lineItemsOk": true
+    },
+    {
+      "file": "pdf-multipage.pdf",
+      "kind": "pdf",
+      "group": "normal",
+      "phase": 1,
+      "note": "2 pages, 14 line items",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 6,
+      "jobMs": 1302,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "MP-5001",
+          "actual": "MP-5001",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-10",
+          "actual": "2026-03-10",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Summit Hardware Wholesale",
+          "actual": "Summit Hardware Wholesale",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "City Builders",
+          "actual": "City Builders",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 798.75,
+          "actual": 798.75,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 55.91,
+          "actual": 55.91,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 854.66,
+          "actual": 854.66,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": "USD",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 14,
+      "lineItemsActual": 14,
+      "lineItemsOk": true
+    },
+    {
+      "file": "not-invoice.pdf",
+      "kind": "pdf",
+      "group": "not_invoice",
+      "phase": 1,
+      "note": "must not invent values",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 7,
+      "jobMs": 839,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": true,
+      "expectedNeedsReview": true,
+      "reviewOk": true,
+      "rules": [
+        "missing_field",
+        "missing_line_items"
+      ],
+      "requiredRules": [
+        "missing_field"
+      ],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": null,
+          "actual": null,
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": null,
+          "actual": null,
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": null,
+          "actual": null,
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": null,
+          "actual": null,
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": null,
+          "actual": null,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": null,
+          "actual": null,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": null,
+          "actual": null,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": null,
+          "actual": null,
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 0,
+      "lineItemsActual": 0,
+      "lineItemsOk": true
+    },
+    {
+      "file": "csv-kv-comma.csv",
+      "kind": "csv",
+      "group": "normal",
+      "phase": 1,
+      "note": "key/value + table, comma",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 8,
+      "jobMs": 4760,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "CSV-2001",
+          "actual": "CSV-2001",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-02-03",
+          "actual": "2026-02-03",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Lakeside Stationery",
+          "actual": "Lakeside Stationery",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Maple Grove School",
+          "actual": "Maple Grove School",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 165,
+          "actual": 165,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 8.25,
+          "actual": 8.25,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 173.25,
+          "actual": 173.25,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": "USD",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 3,
+      "lineItemsActual": 3,
+      "lineItemsOk": true
+    },
+    {
+      "file": "csv-kv-semicolon.csv",
+      "kind": "csv",
+      "group": "normal",
+      "phase": 1,
+      "note": "semicolon delimiter",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 9,
+      "jobMs": 18314,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "CSV-2002",
+          "actual": "CSV-2002",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-02-17",
+          "actual": "2026-02-17",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Orchid Medical Supplies",
+          "actual": "Orchid Medical Supplies",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Delta Cafe",
+          "actual": "Delta Cafe",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 111,
+          "actual": 111,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 11.1,
+          "actual": 11.1,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 122.1,
+          "actual": 122.1,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "EUR",
+          "actual": "EUR",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 2,
+      "lineItemsActual": 2,
+      "lineItemsOk": true
+    },
+    {
+      "file": "csv-flat.csv",
+      "kind": "csv",
+      "group": "normal",
+      "phase": 1,
+      "note": "one row per line item, supplier name contains a comma",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 10,
+      "jobMs": 2156,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "CSV-2003",
+          "actual": "CSV-2003",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-02-24",
+          "actual": "2026-02-24",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Harbor & Sons, Ltd",
+          "actual": "Harbor & Sons, Ltd",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Delta Cafe",
+          "actual": "Delta Cafe",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 271.2,
+          "actual": 271.2,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 54.24,
+          "actual": 54.24,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 325.44,
+          "actual": 325.44,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "GBP",
+          "actual": "GBP",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 3,
+      "lineItemsActual": 3,
+      "lineItemsOk": true
+    },
+    {
+      "file": "xlsx-single.xlsx",
+      "kind": "xlsx",
+      "group": "normal",
+      "phase": 1,
+      "note": "single sheet",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 11,
+      "jobMs": 11122,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "XLS-3001",
+          "actual": "XLS-3001",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-02",
+          "actual": "2026-03-02",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Cobalt Logistics",
+          "actual": "Cobalt Logistics",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Evergreen Pharmacy",
+          "actual": "Evergreen Pharmacy",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 830,
+          "actual": 830,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 49.8,
+          "actual": 49.8,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 879.8,
+          "actual": 879.8,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": "USD",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 2,
+      "lineItemsActual": 2,
+      "lineItemsOk": true
+    },
+    {
+      "file": "xlsx-multisheet.xlsx",
+      "kind": "xlsx",
+      "group": "normal",
+      "phase": 1,
+      "note": "header on sheet 1, items on sheet 2",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 12,
+      "jobMs": 8230,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "XLS-3002",
+          "actual": "XLS-3002",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-09",
+          "actual": "2026-03-09",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Juniper Cloud Services",
+          "actual": "Juniper Cloud Services",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Paper Lane Studio",
+          "actual": "Paper Lane Studio",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 468,
+          "actual": 468,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 88.92,
+          "actual": 88.92,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 556.92,
+          "actual": 556.92,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "EUR",
+          "actual": "EUR",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 3,
+      "lineItemsActual": 3,
+      "lineItemsOk": true
+    },
+    {
+      "file": "xlsx-title.xlsx",
+      "kind": "xlsx",
+      "group": "normal",
+      "phase": 1,
+      "note": "title row above the data",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 13,
+      "jobMs": 22901,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "XLS-3003",
+          "actual": "XLS-3003",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-16",
+          "actual": "2026-03-16",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Falcon Auto Parts",
+          "actual": "Falcon Auto Parts",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Quick Fix Garage",
+          "actual": "Quick Fix Garage",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 388.4,
+          "actual": 388.4,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 31.07,
+          "actual": 31.07,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 419.47,
+          "actual": 419.47,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": "USD",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 3,
+      "lineItemsActual": 3,
+      "lineItemsOk": true
+    },
+    {
+      "file": "img-clean.png",
+      "kind": "image",
+      "group": "image",
+      "phase": 1,
+      "note": "clean synthetic PNG",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 14,
+      "jobMs": 7764,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "IMG-4001",
+          "actual": "IMG-4001",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-20",
+          "actual": "2026-03-20",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Granite Building Supplies",
+          "actual": "Granite Building Supplies",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Hillview Academy",
+          "actual": "Hillview Academy",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 443,
+          "actual": 443,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 39.87,
+          "actual": 39.87,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 482.87,
+          "actual": 482.87,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": "USD",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 3,
+      "lineItemsActual": 3,
+      "lineItemsOk": true
+    },
+    {
+      "file": "img-poor.jpg",
+      "kind": "image",
+      "group": "image",
+      "phase": 1,
+      "note": "rotated 2 deg, blur, width 650, JPEG quality 35",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 15,
+      "jobMs": 11177,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "IMG-4002",
+          "actual": "IMG-4002",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-21",
+          "actual": "2026-03-21",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Tidewater Seafood Ltd",
+          "actual": "Tidewater Seafood Ltd",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Blue Anchor Restaurant",
+          "actual": "Blue Anchor Restaurant",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 498.5,
+          "actual": 498.5,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 49.85,
+          "actual": 49.85,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 548.35,
+          "actual": 548.35,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": "USD",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 2,
+      "lineItemsActual": 2,
+      "lineItemsOk": true
+    },
+    {
+      "file": "img-very-poor.jpg",
+      "kind": "image",
+      "group": "image",
+      "phase": 1,
+      "note": "rotated 4 deg, strong blur, width 480, JPEG quality 20",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 16,
+      "jobMs": 8773,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": true,
+      "expectedNeedsReview": false,
+      "reviewOk": false,
+      "rules": [
+        "missing_field",
+        "missing_line_items"
+      ],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "IMG-4003",
+          "actual": null,
+          "ok": false,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-22",
+          "actual": null,
+          "ok": false,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Copperfield Books",
+          "actual": null,
+          "ok": false,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Rose Valley Library",
+          "actual": null,
+          "ok": false,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 344.7,
+          "actual": null,
+          "ok": false,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 17.24,
+          "actual": null,
+          "ok": false,
+          "extracted": true
+        },
+        "total": {
+          "expected": 361.94,
+          "actual": null,
+          "ok": false,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": null,
+          "ok": false,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 0,
+      "lineItemsExpected": 3,
+      "lineItemsActual": 0,
+      "lineItemsOk": false
+    },
+    {
+      "file": "err-total-mismatch.csv",
+      "kind": "csv",
+      "group": "error",
+      "phase": 1,
+      "note": "printed total 125, but subtotal 100 + tax 10",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 17,
+      "jobMs": 8311,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": true,
+      "expectedNeedsReview": true,
+      "reviewOk": true,
+      "rules": [
+        "total_mismatch"
+      ],
+      "requiredRules": [
+        "total_mismatch"
+      ],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "ERR-5001",
+          "actual": "ERR-5001",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-25",
+          "actual": "2026-03-25",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Zenith Pet Supplies",
+          "actual": "Zenith Pet Supplies",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Happy Paws Clinic",
+          "actual": "Happy Paws Clinic",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 100,
+          "actual": 100,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 10,
+          "actual": 10,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 125,
+          "actual": 125,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": "USD",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 2,
+      "lineItemsActual": 2,
+      "lineItemsOk": true
+    },
+    {
+      "file": "err-missing-number.pdf",
+      "kind": "pdf",
+      "group": "error",
+      "phase": 1,
+      "note": "invoice number is not in the document",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 18,
+      "jobMs": 5902,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": true,
+      "expectedNeedsReview": true,
+      "reviewOk": true,
+      "rules": [
+        "missing_field"
+      ],
+      "requiredRules": [
+        "missing_field"
+      ],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": null,
+          "actual": null,
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-26",
+          "actual": "2026-03-26",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Juno Cleaning Services",
+          "actual": "Juno Cleaning Services",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Lotus Yoga Studio",
+          "actual": "Lotus Yoga Studio",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 380,
+          "actual": 380,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 76,
+          "actual": 76,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 456,
+          "actual": 456,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "GBP",
+          "actual": "GBP",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 2,
+      "lineItemsActual": 2,
+      "lineItemsOk": true
+    },
+    {
+      "file": "err-lines-mismatch.xlsx",
+      "kind": "xlsx",
+      "group": "error",
+      "phase": 1,
+      "note": "line items add up to 90, but subtotal says 100",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 19,
+      "jobMs": 16407,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": true,
+      "expectedNeedsReview": true,
+      "reviewOk": true,
+      "rules": [
+        "line_items_mismatch"
+      ],
+      "requiredRules": [
+        "line_items_mismatch"
+      ],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "ERR-5003",
+          "actual": "ERR-5003",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-27",
+          "actual": "2026-03-27",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Nimbus Auto Care",
+          "actual": "Nimbus Auto Care",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Roadrunner Couriers",
+          "actual": "Roadrunner Couriers",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 100,
+          "actual": 100,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 10,
+          "actual": 10,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 110,
+          "actual": 110,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": "USD",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 2,
+      "lineItemsActual": 2,
+      "lineItemsOk": true
+    },
+    {
+      "file": "corrupt.pdf",
+      "kind": "corrupt",
+      "group": "corrupt",
+      "phase": 1,
+      "note": "PDF header, damaged body",
+      "expectedUpload": "accepted",
+      "expectedStatus": "failed",
+      "uploadAccepted": true,
+      "docId": 20,
+      "jobMs": null,
+      "status": "failed",
+      "errorMessage": "Could not read PDF: file is corrupted or invalid",
+      "handledOk": true
+    },
+    {
+      "file": "corrupt.png",
+      "kind": "corrupt",
+      "group": "corrupt",
+      "phase": 1,
+      "note": "PNG header, damaged body",
+      "expectedUpload": "accepted",
+      "expectedStatus": "failed",
+      "uploadAccepted": true,
+      "docId": 21,
+      "jobMs": null,
+      "status": "failed",
+      "errorMessage": "Could not read image: file is corrupted or invalid",
+      "handledOk": true
+    },
+    {
+      "file": "reject-fake.pdf",
+      "kind": "rejected",
+      "group": "reject",
+      "phase": 1,
+      "note": "text file pretending to be a PDF",
+      "expectedUpload": "rejected",
+      "expectedStatus": null,
+      "uploadAccepted": false,
+      "docId": null,
+      "jobMs": null,
+      "status": null,
+      "errorMessage": null,
+      "handledOk": true
+    },
+    {
+      "file": "dup-copy-of-csv-2001.csv",
+      "kind": "csv",
+      "group": "duplicate",
+      "phase": 2,
+      "note": "byte-identical copy of csv-kv-comma.csv",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 22,
+      "jobMs": 6,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": true,
+      "expectedNeedsReview": true,
+      "reviewOk": true,
+      "rules": [
+        "duplicate_invoice",
+        "duplicate_file"
+      ],
+      "requiredRules": [
+        "duplicate_file"
+      ],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "CSV-2001",
+          "actual": "CSV-2001",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-02-03",
+          "actual": "2026-02-03",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Lakeside Stationery",
+          "actual": "Lakeside Stationery",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Maple Grove School",
+          "actual": "Maple Grove School",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 165,
+          "actual": 165,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 8.25,
+          "actual": 8.25,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 173.25,
+          "actual": 173.25,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": "USD",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 3,
+      "lineItemsActual": 3,
+      "lineItemsOk": true
+    },
+    {
+      "file": "pair-a.pdf",
+      "kind": "pdf",
+      "group": "pair",
+      "phase": 2,
+      "note": "first document of a matching PDF/Excel pair",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 23,
+      "jobMs": 1114,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "PAIR-6001",
+          "actual": "PAIR-6001",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-28",
+          "actual": "2026-03-28",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Orion Electrical Wholesale",
+          "actual": "Orion Electrical Wholesale",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Sparks Repair Shop",
+          "actual": "Sparks Repair Shop",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 331,
+          "actual": 331,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 33.1,
+          "actual": 33.1,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 364.1,
+          "actual": 364.1,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": "USD",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 2,
+      "lineItemsActual": 2,
+      "lineItemsOk": true
+    },
+    {
+      "file": "pair-a.xlsx",
+      "kind": "xlsx",
+      "group": "pair",
+      "phase": 2,
+      "note": "same invoice and same values as pair-a.pdf",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 24,
+      "jobMs": 5198,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": true,
+      "expectedNeedsReview": true,
+      "reviewOk": true,
+      "rules": [
+        "duplicate_invoice"
+      ],
+      "requiredRules": [
+        "duplicate_invoice"
+      ],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "PAIR-6001",
+          "actual": "PAIR-6001",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-28",
+          "actual": "2026-03-28",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Orion Electrical Wholesale",
+          "actual": "Orion Electrical Wholesale",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "Sparks Repair Shop",
+          "actual": "Sparks Repair Shop",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 331,
+          "actual": 331,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 33.1,
+          "actual": 33.1,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 364.1,
+          "actual": 364.1,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "USD",
+          "actual": "USD",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 2,
+      "lineItemsActual": 2,
+      "lineItemsOk": true
+    },
+    {
+      "file": "pair-b.pdf",
+      "kind": "pdf",
+      "group": "pair",
+      "phase": 2,
+      "note": "first document of a PDF/Excel pair with different totals",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 25,
+      "jobMs": 3863,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": false,
+      "expectedNeedsReview": false,
+      "reviewOk": true,
+      "rules": [],
+      "requiredRules": [],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "PAIR-6002",
+          "actual": "PAIR-6002",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-29",
+          "actual": "2026-03-29",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Vertex Lab Equipment",
+          "actual": "Vertex Lab Equipment",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "City Hospital Lab",
+          "actual": "City Hospital Lab",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 312,
+          "actual": 312,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 62.4,
+          "actual": 62.4,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 374.4,
+          "actual": 374.4,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "GBP",
+          "actual": "GBP",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 2,
+      "lineItemsActual": 2,
+      "lineItemsOk": true
+    },
+    {
+      "file": "pair-b.xlsx",
+      "kind": "xlsx",
+      "group": "pair",
+      "phase": 2,
+      "note": "same invoice number as pair-b.pdf, but a different total",
+      "expectedUpload": "accepted",
+      "expectedStatus": "completed",
+      "uploadAccepted": true,
+      "docId": 26,
+      "jobMs": 4414,
+      "status": "completed",
+      "errorMessage": null,
+      "needsReview": true,
+      "expectedNeedsReview": true,
+      "reviewOk": true,
+      "rules": [
+        "cross_document_mismatch"
+      ],
+      "requiredRules": [
+        "cross_document_mismatch"
+      ],
+      "missingRules": [],
+      "model": "openai/gpt-oss-20b",
+      "promptVersion": "v1",
+      "fieldResults": {
+        "invoice_number": {
+          "expected": "PAIR-6002",
+          "actual": "PAIR-6002",
+          "ok": true,
+          "extracted": true
+        },
+        "invoice_date": {
+          "expected": "2026-03-29",
+          "actual": "2026-03-29",
+          "ok": true,
+          "extracted": true
+        },
+        "supplier_name": {
+          "expected": "Vertex Lab Equipment",
+          "actual": "Vertex Lab Equipment",
+          "ok": true,
+          "extracted": true
+        },
+        "customer_name": {
+          "expected": "City Hospital Lab",
+          "actual": "City Hospital Lab",
+          "ok": true,
+          "extracted": true
+        },
+        "subtotal": {
+          "expected": 343,
+          "actual": 343,
+          "ok": true,
+          "extracted": true
+        },
+        "tax": {
+          "expected": 68.6,
+          "actual": 68.6,
+          "ok": true,
+          "extracted": true
+        },
+        "total": {
+          "expected": 411.6,
+          "actual": 411.6,
+          "ok": true,
+          "extracted": true
+        },
+        "currency": {
+          "expected": "GBP",
+          "actual": "GBP",
+          "ok": true,
+          "extracted": true
+        }
+      },
+      "fieldsCorrect": 8,
+      "lineItemsExpected": 2,
+      "lineItemsActual": 2,
+      "lineItemsOk": true
+    }
+  ]
+}

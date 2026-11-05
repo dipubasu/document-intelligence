@@ -1,0 +1,13 @@
+Invoice No;CSV-2002
+Date;2026-02-17
+Supplier;Orchid Medical Supplies
+Customer;Delta Cafe
+Currency;EUR
+
+Description;Qty;Unit price;Amount
+First aid kit;3;25.00;75.00
+Bandage roll;40;0.90;36.00
+
+Subtotal;111.00
+Tax;11.10
+Total;122.10

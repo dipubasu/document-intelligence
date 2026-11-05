@@ -1,0 +1,66 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 5 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+5 0 obj
+<< /Length 806 >>
+stream
+BT /F1 11 Tf 50 750 Td (INVOICE) Tj ET
+BT /F1 11 Tf 50 734 Td (Supplier: Summit Hardware Wholesale) Tj ET
+BT /F1 11 Tf 50 718 Td (Invoice No: MP-5001) Tj ET
+BT /F1 11 Tf 50 702 Td (Date: 2026-03-10) Tj ET
+BT /F1 11 Tf 50 686 Td (Customer: City Builders) Tj ET
+BT /F1 11 Tf 50 670 Td (Currency: USD) Tj ET
+BT /F1 11 Tf 50 638 Td (Description Qty Unit price Amount) Tj ET
+BT /F1 11 Tf 50 622 Td (Hammer 1 4.50 4.50) Tj ET
+BT /F1 11 Tf 50 606 Td (Screwdriver set 2 6.75 13.50) Tj ET
+BT /F1 11 Tf 50 590 Td (Wrench 3 9.00 27.00) Tj ET
+BT /F1 11 Tf 50 574 Td (Pliers 4 11.25 45.00) Tj ET
+BT /F1 11 Tf 50 558 Td (Drill bit set 5 13.50 67.50) Tj ET
+BT /F1 11 Tf 50 542 Td (Tape measure 1 15.75 15.75) Tj ET
+BT /F1 11 Tf 50 526 Td (Spirit level 2 18.00 36.00) Tj ET
+BT /F1 11 Tf 50 510 Td (Saw 3 20.25 60.75) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 7 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+7 0 obj
+<< /Length 529 >>
+stream
+BT /F1 11 Tf 50 750 Td (Page 2 of 2) Tj ET
+BT /F1 11 Tf 50 718 Td (Chisel set 4 22.50 90.00) Tj ET
+BT /F1 11 Tf 50 702 Td (Paint brush 5 24.75 123.75) Tj ET
+BT /F1 11 Tf 50 686 Td (Sandpaper pack 1 27.00 27.00) Tj ET
+BT /F1 11 Tf 50 670 Td (Safety goggles 2 29.25 58.50) Tj ET
+BT /F1 11 Tf 50 654 Td (Work gloves 3 31.50 94.50) Tj ET
+BT /F1 11 Tf 50 638 Td (Ladder 4 33.75 135.00) Tj ET
+BT /F1 11 Tf 50 606 Td (Subtotal: 798.75) Tj ET
+BT /F1 11 Tf 50 590 Td (Tax: 55.91) Tj ET
+BT /F1 11 Tf 50 574 Td (Total \(USD\): 854.66) Tj ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000191 00000 n 
+0000000317 00000 n 
+0000001174 00000 n 
+0000001300 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+1880
+%%EOF

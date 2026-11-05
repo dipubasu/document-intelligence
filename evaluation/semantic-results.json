@@ -1,0 +1,1908 @@
+{
+  "startedAt": "2026-11-05T13:20:24.686Z",
+  "corpus": [
+    "pdf-a-01.pdf",
+    "pdf-a-02.pdf",
+    "pdf-b-01.pdf",
+    "pdf-b-02.pdf",
+    "pdf-c-01.pdf",
+    "pdf-multipage.pdf",
+    "csv-kv-comma.csv",
+    "csv-kv-semicolon.csv",
+    "csv-flat.csv",
+    "xlsx-single.xlsx",
+    "xlsx-multisheet.xlsx",
+    "xlsx-title.xlsx",
+    "img-clean.png",
+    "img-poor.jpg",
+    "err-total-mismatch.csv",
+    "err-missing-number.pdf",
+    "err-lines-mismatch.xlsx",
+    "pair-a.pdf",
+    "pair-a.xlsx",
+    "pair-b.pdf",
+    "pair-b.xlsx"
+  ],
+  "failed": [],
+  "latency": {
+    "avg": 622,
+    "min": 481,
+    "max": 1444
+  },
+  "results": [
+    {
+      "kind": "name",
+      "q": "invoice from Riverside Catering Services",
+      "relevant": [
+        "pdf-b-01.pdf"
+      ],
+      "items": [
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.754
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.684
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.684
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.682
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.682
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.681
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.672
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.671
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.669
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.669
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.668
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.667
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.664
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.661
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.657
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.655
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.655
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.644
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.641
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.627
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.619
+        }
+      ],
+      "ms": 481,
+      "notIndexed": 0,
+      "ranks": [
+        1
+      ]
+    },
+    {
+      "kind": "name",
+      "q": "Kestrel Printing",
+      "relevant": [
+        "pdf-b-02.pdf"
+      ],
+      "items": [
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.671
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.606
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.603
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.603
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.599
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.599
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.598
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.595
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.595
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.593
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.593
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.592
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.591
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.589
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.585
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.584
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.582
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.574
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.574
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.569
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.558
+        }
+      ],
+      "ms": 511,
+      "notIndexed": 0,
+      "ranks": [
+        1
+      ]
+    },
+    {
+      "kind": "name",
+      "q": "Orchid Medical Supplies invoice",
+      "relevant": [
+        "csv-kv-semicolon.csv"
+      ],
+      "items": [
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.726
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.716
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.713
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.706
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.705
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.702
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.7
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.698
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.691
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.691
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.69
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.689
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.688
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.683
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.675
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.668
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.659
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.656
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.654
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.64
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.639
+        }
+      ],
+      "ms": 556,
+      "notIndexed": 0,
+      "ranks": [
+        14
+      ]
+    },
+    {
+      "kind": "name",
+      "q": "Tidewater Seafood",
+      "relevant": [
+        "img-poor.jpg"
+      ],
+      "items": [
+        {
+          "name": "img-poor.jpg",
+          "score": 0.63
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.58
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.552
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.551
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.55
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.549
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.548
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.548
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.548
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.547
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.547
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.546
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.544
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.543
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.542
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.536
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.534
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.534
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.534
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.531
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.526
+        }
+      ],
+      "ms": 586,
+      "notIndexed": 0,
+      "ranks": [
+        1
+      ]
+    },
+    {
+      "kind": "name",
+      "q": "Juniper Cloud Services",
+      "relevant": [
+        "xlsx-multisheet.xlsx"
+      ],
+      "items": [
+        {
+          "name": "pair-a.pdf",
+          "score": 0.581
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.58
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.58
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.578
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.576
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.57
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.567
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.564
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.563
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.563
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.563
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.558
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.557
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.556
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.555
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.552
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.549
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.544
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.537
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.537
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.518
+        }
+      ],
+      "ms": 755,
+      "notIndexed": 0,
+      "ranks": [
+        2
+      ]
+    },
+    {
+      "kind": "name",
+      "q": "Zenith Pet Supplies",
+      "relevant": [
+        "err-total-mismatch.csv"
+      ],
+      "items": [
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.583
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.573
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.567
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.567
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.565
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.564
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.563
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.563
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.562
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.56
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.56
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.558
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.556
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.555
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.553
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.552
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.551
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.551
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.547
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.544
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.542
+        }
+      ],
+      "ms": 493,
+      "notIndexed": 0,
+      "ranks": [
+        1
+      ]
+    },
+    {
+      "kind": "customer",
+      "q": "invoices billed to Delta Cafe",
+      "relevant": [
+        "csv-kv-semicolon.csv",
+        "csv-flat.csv"
+      ],
+      "items": [
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.71
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.699
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.692
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.686
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.684
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.683
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.683
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.682
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.679
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.677
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.675
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.674
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.669
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.667
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.664
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.661
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.658
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.656
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.647
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.641
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.637
+        }
+      ],
+      "ms": 528,
+      "notIndexed": 0,
+      "ranks": [
+        12,
+        17
+      ]
+    },
+    {
+      "kind": "customer",
+      "q": "Maple Grove School",
+      "relevant": [
+        "csv-kv-comma.csv"
+      ],
+      "items": [
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.576
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.556
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.544
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.543
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.543
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.541
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.541
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.54
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.54
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.538
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.538
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.537
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.537
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.534
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.532
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.531
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.53
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.529
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.527
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.523
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.521
+        }
+      ],
+      "ms": 506,
+      "notIndexed": 0,
+      "ranks": [
+        1
+      ]
+    },
+    {
+      "kind": "customer",
+      "q": "Sparks Repair Shop",
+      "relevant": [
+        "pair-a.pdf",
+        "pair-a.xlsx"
+      ],
+      "items": [
+        {
+          "name": "pair-a.pdf",
+          "score": 0.638
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.625
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.575
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.574
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.573
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.572
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.571
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.57
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.57
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.57
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.569
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.568
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.567
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.566
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.565
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.562
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.561
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.56
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.558
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.558
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.558
+        }
+      ],
+      "ms": 625,
+      "notIndexed": 0,
+      "ranks": [
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "customer",
+      "q": "City Hospital Lab",
+      "relevant": [
+        "pair-b.pdf",
+        "pair-b.xlsx"
+      ],
+      "items": [
+        {
+          "name": "pair-b.pdf",
+          "score": 0.618
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.602
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.6
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.584
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.582
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.579
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.578
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.577
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.575
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.575
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.573
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.571
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.569
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.568
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.563
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.561
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.56
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.556
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.554
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.553
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.552
+        }
+      ],
+      "ms": 535,
+      "notIndexed": 0,
+      "ranks": [
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "number",
+      "q": "ALP-1001",
+      "relevant": [
+        "pdf-a-01.pdf"
+      ],
+      "items": [
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.675
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.634
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.628
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.627
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.621
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.62
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.618
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.616
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.615
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.611
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.61
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.609
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.609
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.606
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.606
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.606
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.606
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.598
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.596
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.593
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.591
+        }
+      ],
+      "ms": 732,
+      "notIndexed": 0,
+      "ranks": [
+        1
+      ]
+    },
+    {
+      "kind": "number",
+      "q": "PAIR-6002",
+      "relevant": [
+        "pair-b.pdf",
+        "pair-b.xlsx"
+      ],
+      "items": [
+        {
+          "name": "pair-b.pdf",
+          "score": 0.726
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.72
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.717
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.717
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.66
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.625
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.623
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.621
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.618
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.616
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.611
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.609
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.608
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.607
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.605
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.605
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.603
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.602
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.598
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.595
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.587
+        }
+      ],
+      "ms": 538,
+      "notIndexed": 0,
+      "ranks": [
+        1,
+        3
+      ]
+    },
+    {
+      "kind": "topic",
+      "q": "catering and food supply",
+      "relevant": [
+        "pdf-b-01.pdf",
+        "img-poor.jpg"
+      ],
+      "items": [
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.627
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.598
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.596
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.595
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.589
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.589
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.585
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.581
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.578
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.575
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.574
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.572
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.572
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.569
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.568
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.564
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.563
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.557
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.555
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.552
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.546
+        }
+      ],
+      "ms": 600,
+      "notIndexed": 0,
+      "ranks": [
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "topic",
+      "q": "car and auto parts repair",
+      "relevant": [
+        "xlsx-title.xlsx",
+        "err-lines-mismatch.xlsx"
+      ],
+      "items": [
+        {
+          "name": "pair-a.pdf",
+          "score": 0.605
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.597
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.596
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.582
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.578
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.569
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.569
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.568
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.568
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.567
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.566
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.566
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.565
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.561
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.561
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.561
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.553
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.548
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.545
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.543
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.542
+        }
+      ],
+      "ms": 513,
+      "notIndexed": 0,
+      "ranks": [
+        3,
+        14
+      ]
+    },
+    {
+      "kind": "topic",
+      "q": "software and cloud subscription",
+      "relevant": [
+        "pdf-c-01.pdf",
+        "xlsx-multisheet.xlsx"
+      ],
+      "items": [
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.633
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.619
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.613
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.612
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.611
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.608
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.605
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.605
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.604
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.603
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.6
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.599
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.597
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.596
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.592
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.59
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.589
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.587
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.585
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.579
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.577
+        }
+      ],
+      "ms": 625,
+      "notIndexed": 0,
+      "ranks": [
+        1,
+        7
+      ]
+    },
+    {
+      "kind": "topic",
+      "q": "medical and laboratory equipment",
+      "relevant": [
+        "csv-kv-semicolon.csv",
+        "pair-b.pdf",
+        "pair-b.xlsx"
+      ],
+      "items": [
+        {
+          "name": "pair-b.pdf",
+          "score": 0.622
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.609
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.608
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.598
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.593
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.591
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.589
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.587
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.585
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.582
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.582
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.582
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.58
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.577
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.575
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.558
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.557
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.555
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.553
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.547
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.547
+        }
+      ],
+      "ms": 768,
+      "notIndexed": 0,
+      "ranks": [
+        1,
+        3,
+        11
+      ]
+    },
+    {
+      "kind": "topic",
+      "q": "school supplies",
+      "relevant": [
+        "csv-kv-comma.csv",
+        "pdf-b-02.pdf"
+      ],
+      "items": [
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.609
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.608
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.604
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.603
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.6
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.597
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.594
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.593
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.593
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.593
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.59
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.59
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.585
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.58
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.579
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.578
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.576
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.572
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.569
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.566
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.565
+        }
+      ],
+      "ms": 532,
+      "notIndexed": 0,
+      "ranks": [
+        1,
+        6
+      ]
+    },
+    {
+      "kind": "negative",
+      "q": "quantum physics lecture notes",
+      "relevant": [],
+      "items": [
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.54
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.54
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.54
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.538
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.538
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.537
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.537
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.531
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.531
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.53
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.53
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.529
+        },
+        {
+          "name": "img-poor.jpg",
+          "score": 0.527
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.525
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.521
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.52
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.514
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.512
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.504
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.501
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.501
+        }
+      ],
+      "ms": 493,
+      "notIndexed": 0,
+      "ranks": []
+    },
+    {
+      "kind": "negative",
+      "q": "how to bake sourdough bread",
+      "relevant": [],
+      "items": [
+        {
+          "name": "img-poor.jpg",
+          "score": 0.538
+        },
+        {
+          "name": "pdf-b-01.pdf",
+          "score": 0.535
+        },
+        {
+          "name": "err-total-mismatch.csv",
+          "score": 0.533
+        },
+        {
+          "name": "img-clean.png",
+          "score": 0.533
+        },
+        {
+          "name": "err-missing-number.pdf",
+          "score": 0.53
+        },
+        {
+          "name": "xlsx-single.xlsx",
+          "score": 0.527
+        },
+        {
+          "name": "csv-kv-comma.csv",
+          "score": 0.524
+        },
+        {
+          "name": "pdf-c-01.pdf",
+          "score": 0.523
+        },
+        {
+          "name": "xlsx-multisheet.xlsx",
+          "score": 0.521
+        },
+        {
+          "name": "pdf-a-01.pdf",
+          "score": 0.518
+        },
+        {
+          "name": "xlsx-title.xlsx",
+          "score": 0.517
+        },
+        {
+          "name": "csv-flat.csv",
+          "score": 0.517
+        },
+        {
+          "name": "pair-b.xlsx",
+          "score": 0.516
+        },
+        {
+          "name": "pdf-b-02.pdf",
+          "score": 0.515
+        },
+        {
+          "name": "pair-a.xlsx",
+          "score": 0.513
+        },
+        {
+          "name": "csv-kv-semicolon.csv",
+          "score": 0.513
+        },
+        {
+          "name": "pdf-multipage.pdf",
+          "score": 0.512
+        },
+        {
+          "name": "pair-a.pdf",
+          "score": 0.511
+        },
+        {
+          "name": "err-lines-mismatch.xlsx",
+          "score": 0.511
+        },
+        {
+          "name": "pair-b.pdf",
+          "score": 0.509
+        },
+        {
+          "name": "pdf-a-02.pdf",
+          "score": 0.504
+        }
+      ],
+      "ms": 1444,
+      "notIndexed": 0,
+      "ranks": []
+    }
+  ]
+}
