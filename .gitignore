@@ -1,12 +1,12 @@
-# dependencies
+# Dependencies
 node_modules/
 
-# secrets, কখনো GitHub এ যাবে না
+# Secrets (never commit real keys)
 .env
 .env.*
 !.env.example
 
-# runtime data
+# Runtime data
 backend/data/
 backend/uploads/
 backend/logs/
@@ -14,13 +14,13 @@ backend/logs/
 *.sqlite-journal
 *.db
 
-# build output
+# Build output
 frontend/dist/
 
-# OS / editor
+# OS and editor files
 .DS_Store
 Thumbs.db
 .vscode/
 
-# বড় generated dataset (script দিয়ে আবার বানানো যায়)
+# Large generated test files
 evaluation/dataset/large/

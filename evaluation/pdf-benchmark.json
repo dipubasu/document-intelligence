@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-11-07T06:32:14.804Z",
+  "node": "v24.22.0",
+  "machine": "8 CPU threads, 20220.6 MB RAM, win32",
+  "settings": {
+    "maxPages": 1500,
+    "chunkSize": 50,
+    "linesPerPage": 15
+  },
+  "runs": [
+    {
+      "pages": 100,
+      "fileSizeMB": 0.1,
+      "parseMs": 172,
+      "pagesPerSecond": 580.6,
+      "pagesReturned": 100,
+      "pageCountReported": 100,
+      "pagesWithCorrectText": 100,
+      "lowTextPages": 0,
+      "peakRssMB": 87.8
+    },
+    {
+      "pages": 500,
+      "fileSizeMB": 0.6,
+      "parseMs": 483,
+      "pagesPerSecond": 1034.2,
+      "pagesReturned": 500,
+      "pageCountReported": 500,
+      "pagesWithCorrectText": 500,
+      "lowTextPages": 0,
+      "peakRssMB": 118
+    },
+    {
+      "pages": 1000,
+      "fileSizeMB": 1.2,
+      "parseMs": 900,
+      "pagesPerSecond": 1111.2,
+      "pagesReturned": 1000,
+      "pageCountReported": 1000,
+      "pagesWithCorrectText": 1000,
+      "lowTextPages": 0,
+      "peakRssMB": 170.8
+    }
+  ],
+  "limit": {
+    "pages": 1501,
+    "rejected": true,
+    "code": "PAGE_LIMIT",
+    "message": "PDF has 1501 pages, limit is 1500",
+    "ms": 32
+  }
+}
